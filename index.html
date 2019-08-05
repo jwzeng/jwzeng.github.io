@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/leetCodeTencent50-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/leetCodeTencent50-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -295,8 +295,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/04/leetCodeTencent50-1/" itemprop="url">
-                  leetcode腾讯精选练习50 题（155. 最小栈）
+                <a class="post-title-link" href="/2019/08/05/leetCodeTencent50-2/" itemprop="url">
+                  leetcode腾讯精选练习50题（20. 有效的括号）
                 </a>
               
             
@@ -322,12 +322,179 @@
                 
               
 
-              <time title="Post created: 2019-08-04 16:30:12 / Updated at: 17:09:20" itemprop="dateCreated datePublished" datetime="2019-08-04T16:30:12+08:00">2019-08-04</time>
+              <time title="Post created: 2019-08-05 09:47:12 / Updated at: 10:51:08" itemprop="dateCreated datePublished" datetime="2019-08-05T09:47:12+08:00">2019-08-05</time>
             
 
             
               
 
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<p>​    1.左括号必须用相同类型的右括号闭合。<br>    2.左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/valid-parentheses" target="_blank" rel="external">https://leetcode-cn.com/problems/valid-parentheses</a></p>
+<p><strong>示例1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;()&quot;</div><div class="line">输出: true</div></pre></td></tr></table></figure></p>
+<p><strong>示例2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;()[]&#123;&#125;&quot;</div><div class="line">输出: true</div></pre></td></tr></table></figure>
+<p><strong>示例3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;(]&quot;</div><div class="line">输出: false</div></pre></td></tr></table></figure>
+<p><strong>示例4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;([)]&quot;</div><div class="line">输出: false</div></pre></td></tr></table></figure>
+<p><strong>示例5:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;&#123;[]&#125;&quot;</div><div class="line">输出: true</div></pre></td></tr></table></figure>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>从题目的示例来看，有效字符串的括号都是要一对一对的，因此可以采用左括号进栈；遇到右括号和栈中最后一个配对就出栈，不配对就是无效字符串</p>
+<p>采用list类型来实现进出栈，对字符串进行遍历即可</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValid</span><span class="params">(self, s: str)</span> -&gt; bool:</span></div><div class="line">        stack = []</div><div class="line">        <span class="keyword">for</span> bracket <span class="keyword">in</span> s:        </div><div class="line">            <span class="keyword">if</span> bracket == <span class="string">'('</span> <span class="keyword">or</span> bracket == <span class="string">'&#123;'</span> <span class="keyword">or</span> bracket == <span class="string">'['</span>:</div><div class="line">                stack.append(bracket)</div><div class="line">            <span class="keyword">elif</span> len(stack) == <span class="number">0</span> <span class="keyword">and</span> (bracket == <span class="string">')'</span> <span class="keyword">or</span> bracket == <span class="string">'&#125;'</span> <span class="keyword">or</span> bracket == <span class="string">']'</span>):</div><div class="line">                <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">            <span class="keyword">elif</span> bracket == <span class="string">')'</span>:</div><div class="line">                <span class="keyword">if</span> stack[<span class="number">-1</span>] == <span class="string">'('</span>:</div><div class="line">                    stack.pop()</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">            <span class="keyword">elif</span> bracket == <span class="string">'&#125;'</span>:</div><div class="line">                <span class="keyword">if</span> stack[<span class="number">-1</span>] == <span class="string">'&#123;'</span>:</div><div class="line">                    stack.pop()</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">            <span class="keyword">elif</span> bracket == <span class="string">']'</span>:</div><div class="line">                <span class="keyword">if</span> stack[<span class="number">-1</span>] == <span class="string">'['</span>:</div><div class="line">                    stack.pop()</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="keyword">if</span> len(stack) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/leetCodeTencent50-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/leetCodeTencent50-1/" itemprop="url">
+                  leetcode腾讯精选练习50题（155. 最小栈）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-04 16:30:12" itemprop="dateCreated datePublished" datetime="2019-08-04T16:30:12+08:00">2019-08-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-08-05 10:51:46" itemprop="dateModified" datetime="2019-08-05T10:51:46+08:00">2019-08-05</time>
               
             
           </span>
@@ -370,10 +537,10 @@
 <p>所以采用其他变量来保存最小元素，开始考虑的是采用numbers类型，但运行测试后发现pop后最小值无法回溯；最采用list保存最小元素解决了问题</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><ol>
 <li><p>使用了list保存数据，int保存最小元素。运行结果出现问题（pop后最小值无法回溯）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class MinStack:</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        initialize your data structure here.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        self.data = []</div><div class="line">        self.minData = float(&apos;inf&apos;)</div><div class="line"></div><div class="line">    def push(self, x: int) -&gt; None:</div><div class="line">        self.data.append(x)</div><div class="line">        if x &lt; self.minData:</div><div class="line">            self.minData = x</div><div class="line">    def pop(self) -&gt; None:</div><div class="line">        self.data.pop()</div><div class="line">    def top(self) -&gt; int:</div><div class="line">        return self.data[-1]</div><div class="line">    def getMin(self) -&gt; int:</div><div class="line">        return self.minData</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        initialize your data structure here.</div><div class="line">        """</div><div class="line">        self.data = []</div><div class="line">        self.minData = float(<span class="string">'inf'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x: int)</span> -&gt; <span class="keyword">None</span>:</span></div><div class="line">        self.data.append(x)</div><div class="line">        <span class="keyword">if</span> x &lt; self.minData:</div><div class="line">            self.minData = x</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span> -&gt; <span class="keyword">None</span>:</span></div><div class="line">        self.data.pop()</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">return</span> self.data[<span class="number">-1</span>]</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMin</span><span class="params">(self)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">return</span> self.minData</div></pre></td></tr></table></figure>
 </li>
 <li><p>使用了list保存数据，同时list保存最小元素，运行通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">class MinStack:</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        initialize your data structure here.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        self.data = []</div><div class="line">        self.minData = []</div><div class="line"></div><div class="line">    def push(self, x: int) -&gt; None:</div><div class="line">        self.data.append(x)</div><div class="line">        if len(self.minData) == 0:</div><div class="line">            self.minData.append(x)</div><div class="line">        elif x &lt; self.minData[-1]:</div><div class="line">            self.minData.append(x)</div><div class="line">        else:</div><div class="line">            self.minData.append(self.minData[-1])</div><div class="line">    def pop(self) -&gt; None:</div><div class="line">        self.data.pop()</div><div class="line">        self.minData.pop()</div><div class="line">    def top(self) -&gt; int:</div><div class="line">        return self.data[-1]</div><div class="line">    def getMin(self) -&gt; int:</div><div class="line">        return self.minData[-1]</div><div class="line"></div><div class="line"></div><div class="line"># Your MinStack object will be instantiated and called as such:</div><div class="line"># obj = MinStack()</div><div class="line"># obj.push(x)</div><div class="line"># obj.pop()</div><div class="line"># param_3 = obj.top()</div><div class="line"># param_4 = obj.getMin()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        initialize your data structure here.</div><div class="line">        """</div><div class="line">        self.data = []</div><div class="line">        self.minData = []</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x: int)</span> -&gt; <span class="keyword">None</span>:</span></div><div class="line">        self.data.append(x)</div><div class="line">        <span class="keyword">if</span> len(self.minData) == <span class="number">0</span>:</div><div class="line">            self.minData.append(x)</div><div class="line">        <span class="keyword">elif</span> x &lt; self.minData[<span class="number">-1</span>]:</div><div class="line">            self.minData.append(x)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.minData.append(self.minData[<span class="number">-1</span>])</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span> -&gt; <span class="keyword">None</span>:</span></div><div class="line">        self.data.pop()</div><div class="line">        self.minData.pop()</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">return</span> self.data[<span class="number">-1</span>]</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMin</span><span class="params">(self)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">return</span> self.minData[<span class="number">-1</span>]</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Your MinStack object will be instantiated and called as such:</span></div><div class="line"><span class="comment"># obj = MinStack()</span></div><div class="line"><span class="comment"># obj.push(x)</span></div><div class="line"><span class="comment"># obj.pop()</span></div><div class="line"><span class="comment"># param_3 = obj.top()</span></div><div class="line"><span class="comment"># param_4 = obj.getMin()</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -828,7 +995,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
