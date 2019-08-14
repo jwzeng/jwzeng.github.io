@@ -276,6 +276,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/leetCodeTencent50-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/14/leetCodeTencent50-15/" itemprop="url">
+                  leetcode腾讯精选练习50题（236. 二叉树的最近公共祖先）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-14 19:47:15 / Updated at: 21:36:08" itemprop="dateCreated datePublished" datetime="2019-08-14T19:47:15+08:00">2019-08-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。</p>
+<p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
+<p>例如，给定如下二叉树:  root = [3,5,1,6,2,0,8,null,null,7,4]</p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/binarysearchtree_improved.png" alt="img"> </p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1</div><div class="line">输出: 3</div><div class="line">解释: 节点 5 和节点 1 的最近公共祖先是节点 3。</div></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4</div><div class="line">输出: 5</div><div class="line">解释: 节点 5 和节点 4 的最近公共祖先是节点 5。因为根据定义最近公共祖先节点可以为节点本身。</div></pre></td></tr></table></figure>
+<p><strong>说明:</strong></p>
+<ul>
+<li>所有节点的值都是唯一的。</li>
+<li>p、q 为不同节点且均存在于给定的二叉树中 。</li>
+</ul>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree" target="_blank" rel="external">https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>类似于上一题二叉<strong>搜索</strong>树的最近公共祖先，上一题是根据输入值根节点与p、q的大小来分成三类递归的，但现在题目变成了二叉树，没有大小来分类了，没有输入值那就只能根据<strong>输出值（返回值）</strong>来判断了。想了一会，没想出怎么返回的，最后参考了一下别人的，还是分成三类：</p>
+<p>1.p、q其中一个是根节点，则返回根节点</p>
+<p>2.求p、q在左子树中是否存在，根据存在与否返回不同值</p>
+<p>3.求p、q在右子树中是否存在，根据存在与否返回不同值</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><strong>代码 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lowestCommonAncestor</span><span class="params">(self, root: <span class="string">'TreeNode'</span>, p: <span class="string">'TreeNode'</span>, q: <span class="string">'TreeNode'</span>)</span> -&gt; 'TreeNode':</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        <span class="keyword">if</span> root.val == p.val <span class="keyword">or</span> root.val == q.val:</div><div class="line">            <span class="keyword">return</span> root</div><div class="line">        l = self.lowestCommonAncestor(root.left, p, q)</div><div class="line">        r = self.lowestCommonAncestor(root.right, p, q)</div><div class="line">        <span class="keyword">if</span> l <span class="keyword">and</span> r:</div><div class="line">            <span class="keyword">return</span> root</div><div class="line">        <span class="keyword">if</span> l <span class="keyword">and</span> (<span class="keyword">not</span> r):</div><div class="line">            <span class="keyword">return</span> l</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">not</span> l) <span class="keyword">and</span> r:</div><div class="line">            <span class="keyword">return</span> r</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">not</span> l) <span class="keyword">and</span> (<span class="keyword">not</span> r):</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/leetCodeTencent50-14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1649,157 +1808,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/09/leetCodeTencent50-5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/09/leetCodeTencent50-5/" itemprop="url">
-                  leetcode腾讯精选练习50题（122. 买卖股票的最佳时机 II）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-08-09 21:22:40 / Updated at: 21:40:04" itemprop="dateCreated datePublished" datetime="2019-08-09T21:22:40+08:00">2019-08-09</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
-<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
-<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">输入: [7,1,5,3,6,4]</div><div class="line">输出: 7</div><div class="line">解释: 在第 2 天（股票价格 = 1）的时候买入，在第 3 天（股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。</div><div class="line">     随后，在第 4 天（股票价格 = 3）的时候买入，在第 5 天（股票价格 = 6）的时候卖出, 这笔交易所能获得利润 = 6-3 = 3 。</div></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">输入: [1,2,3,4,5]</div><div class="line">输出: 4</div><div class="line">解释: 在第 1 天（股票价格 = 1）的时候买入，在第 5 天 （股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。</div><div class="line">     注意你不能在第 1 天和第 2 天接连购买股票，之后再将它们卖出。</div><div class="line">     因为这样属于同时参与了多笔交易，你必须在再次购买前出售掉之前的股票。</div></pre></td></tr></table></figure>
-<p><strong>示例 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入: [7,6,4,3,1]</div><div class="line">输出: 0</div><div class="line">解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii" target="_blank" rel="external">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>直接每一天的价格减去前一天的，大于零的加到利润上，这样就行了</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices: List[int])</span> -&gt; int:</span></div><div class="line">        maxp = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(prices)<span class="number">-1</span>):</div><div class="line">            p = prices[i+<span class="number">1</span>] - prices[i]</div><div class="line">            <span class="keyword">if</span> p &gt; <span class="number">0</span>:</div><div class="line">                maxp += p</div><div class="line">        <span class="keyword">return</span> maxp</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1847,7 +1855,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
