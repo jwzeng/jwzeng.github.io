@@ -217,7 +217,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Accueil</a>
   </li>
         
         
@@ -276,6 +276,307 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/leetCodeTencent50-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/13/leetCodeTencent50-12/" itemprop="url">
+                  leetcode腾讯精选练习50题（124. 二叉树中的最大路径和）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-13 11:06:50 / Updated at: 15:05:45" itemprop="dateCreated datePublished" datetime="2019-08-13T11:06:50+08:00">2019-08-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个<strong>非空</strong>二叉树，返回其最大路径和。</p>
+<p>本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径<strong>至少包含一个</strong>节点，且不一定经过根节点。</p>
+<p><strong>示例 1:</strong></p>
+<p>给定二叉树 <code>[3,9,20,null,null,15,7]</code>， </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">输入: [1,2,3]</div><div class="line"></div><div class="line">       1</div><div class="line">      / \</div><div class="line">     2   3</div><div class="line"></div><div class="line">输出: 6</div></pre></td></tr></table></figure>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">输入: [-10,9,20,null,null,15,7]</div><div class="line"></div><div class="line">   -10</div><div class="line">   / \</div><div class="line">  9  20</div><div class="line">    /  \</div><div class="line">   15   7</div><div class="line"></div><div class="line">输出: 42</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" target="_blank" rel="external">https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/</a> </p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>首先想到的是递归实现，最大路径和 = 根节点的值 + 左子树最大路径和 + 右子树最大路径和，但这个递推式要成立要一个前提条件：左子树路径的终点是根节点的儿子节点，同理右子树。</p>
+<p>修改后，根节点终点最大路径和result1 = 根节点的值<strong>V </strong>+ max（左子树根节点终点最大路径和<strong>L </strong>， 右子树根节点终点最大路径和<strong>R</strong>），但测试后还是有两个问题：第一个是当<strong>L</strong>或<strong>R</strong>的值小于0时，不应该相加，这可以通过取它们和0的<strong>最大值</strong>解决</p>
+<p>第二个问题是最大路径可以不经过根节点，这个没想出来，参考了一下别人的，不经过根节点最大路径和result2 = max(所有子树经过根节点的最大路径和) = 根节点的值<strong>V </strong>+ 左子树根节点终点最大路径和<strong>L </strong> + 右子树根节点终点最大路径和<strong>R</strong></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    maxPath = -float(<span class="string">'inf'</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxPathSum</span><span class="params">(self, root: TreeNode, flag= True)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        l = max(self.maxPathSum(root.left, <span class="keyword">False</span>), <span class="number">0</span>)</div><div class="line">        r = max(self.maxPathSum(root.right, <span class="keyword">False</span>), <span class="number">0</span>)</div><div class="line">        result1 = root.val + max(l, r)</div><div class="line">        result2 = root.val + l + r</div><div class="line">        self.maxPath = max(self.maxPath, result2)</div><div class="line">        <span class="keyword">return</span> self.maxPath <span class="keyword">if</span> flag <span class="keyword">else</span> result1</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/leetCodeTencent50-11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/12/leetCodeTencent50-11/" itemprop="url">
+                  leetcode腾讯精选练习50题（104. 二叉树的最大深度）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-12 22:12:14 / Updated at: 22:16:05" itemprop="dateCreated datePublished" datetime="2019-08-12T22:12:14+08:00">2019-08-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个二叉树，找出其最大深度。</p>
+<p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
+<p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p>
+<p><strong>示例 1:</strong></p>
+<p>给定二叉树 <code>[3,9,20,null,null,15,7]</code>， </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  3</div><div class="line"> / \</div><div class="line">9  20</div><div class="line">  /  \</div><div class="line"> 15   7</div></pre></td></tr></table></figure>
+<p>返回它的最大深度 3 。 </p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="external">https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/</a> </p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>动态规划用递归实现，最大深度 = max(左子树最大深度，右子树最大深度) + 1</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><strong>代码 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxDepth</span><span class="params">(self, root: TreeNode)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        l = root.left</div><div class="line">        r = root.right</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">not</span> l) <span class="keyword">and</span> (<span class="keyword">not</span> r):</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            result = max(self.maxDepth(l), self.maxDepth(r)) + <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/leetCodeTencent50-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -315,14 +616,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-12 17:29:24 / Modified: 17:37:12" itemprop="dateCreated datePublished" datetime="2019-08-12T17:29:24+08:00">2019-08-12</time>
+              <time title="Post created: 2019-08-12 17:29:24 / Updated at: 17:37:12" itemprop="dateCreated datePublished" datetime="2019-08-12T17:29:24+08:00">2019-08-12</time>
             
 
             
@@ -467,14 +768,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-12 15:35:42 / Modified: 17:28:05" itemprop="dateCreated datePublished" datetime="2019-08-12T15:35:42+08:00">2019-08-12</time>
+              <time title="Post created: 2019-08-12 15:35:42 / Updated at: 17:28:05" itemprop="dateCreated datePublished" datetime="2019-08-12T15:35:42+08:00">2019-08-12</time>
             
 
             
@@ -618,14 +919,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-12 11:38:47 / Modified: 11:41:42" itemprop="dateCreated datePublished" datetime="2019-08-12T11:38:47+08:00">2019-08-12</time>
+              <time title="Post created: 2019-08-12 11:38:47 / Updated at: 11:41:42" itemprop="dateCreated datePublished" datetime="2019-08-12T11:38:47+08:00">2019-08-12</time>
             
 
             
@@ -767,14 +1068,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-11 17:58:37" itemprop="dateCreated datePublished" datetime="2019-08-11T17:58:37+08:00">2019-08-11</time>
+              <time title="Post created: 2019-08-11 17:58:37" itemprop="dateCreated datePublished" datetime="2019-08-11T17:58:37+08:00">2019-08-11</time>
             
 
             
@@ -791,7 +1092,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-12 11:42:00" itemprop="dateModified" datetime="2019-08-12T11:42:00+08:00">2019-08-12</time>
+                <time title="Updated at: 2019-08-12 11:42:00" itemprop="dateModified" datetime="2019-08-12T11:42:00+08:00">2019-08-12</time>
               
             
           </span>
@@ -925,14 +1226,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-10 21:10:27 / Modified: 22:13:27" itemprop="dateCreated datePublished" datetime="2019-08-10T21:10:27+08:00">2019-08-10</time>
+              <time title="Post created: 2019-08-10 21:10:27 / Updated at: 22:13:27" itemprop="dateCreated datePublished" datetime="2019-08-10T21:10:27+08:00">2019-08-10</time>
             
 
             
@@ -1075,14 +1376,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-09 21:22:40 / Modified: 21:40:04" itemprop="dateCreated datePublished" datetime="2019-08-09T21:22:40+08:00">2019-08-09</time>
+              <time title="Post created: 2019-08-09 21:22:40 / Updated at: 21:40:04" itemprop="dateCreated datePublished" datetime="2019-08-09T21:22:40+08:00">2019-08-09</time>
             
 
             
@@ -1226,14 +1527,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-08 21:17:30 / Modified: 21:22:35" itemprop="dateCreated datePublished" datetime="2019-08-08T21:17:30+08:00">2019-08-08</time>
+              <time title="Post created: 2019-08-08 21:17:30 / Updated at: 21:22:35" itemprop="dateCreated datePublished" datetime="2019-08-08T21:17:30+08:00">2019-08-08</time>
             
 
             
@@ -1371,14 +1672,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-05 15:52:18 / Modified: 15:58:37" itemprop="dateCreated datePublished" datetime="2019-08-05T15:52:18+08:00">2019-08-05</time>
+              <time title="Post created: 2019-08-05 15:52:18 / Updated at: 15:58:37" itemprop="dateCreated datePublished" datetime="2019-08-05T15:52:18+08:00">2019-08-05</time>
             
 
             
@@ -1464,326 +1765,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/leetCodeTencent50-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/05/leetCodeTencent50-2/" itemprop="url">
-                  leetcode腾讯精选练习50题（20. 有效的括号）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-08-05 09:47:12 / Modified: 11:11:47" itemprop="dateCreated datePublished" datetime="2019-08-05T09:47:12+08:00">2019-08-05</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
-<p>有效字符串需满足：</p>
-<p>​    1.左括号必须用相同类型的右括号闭合。<br>    2.左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/valid-parentheses" target="_blank" rel="external">https://leetcode-cn.com/problems/valid-parentheses</a></p>
-<p><strong>示例1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;()&quot;</div><div class="line">输出: true</div></pre></td></tr></table></figure></p>
-<p><strong>示例2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;()[]&#123;&#125;&quot;</div><div class="line">输出: true</div></pre></td></tr></table></figure>
-<p><strong>示例3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;(]&quot;</div><div class="line">输出: false</div></pre></td></tr></table></figure>
-<p><strong>示例4:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;([)]&quot;</div><div class="line">输出: false</div></pre></td></tr></table></figure>
-<p><strong>示例5:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;&#123;[]&#125;&quot;</div><div class="line">输出: true</div></pre></td></tr></table></figure>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>从题目的示例来看，有效字符串的括号都是要一对一对的，因此可以采用左括号进栈；遇到右括号和栈中最后一个配对就出栈，不配对就是无效字符串</p>
-<p>采用list类型来实现进出栈，对字符串进行遍历即可</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValid</span><span class="params">(self, s: str)</span> -&gt; bool:</span></div><div class="line">        stack = []</div><div class="line">        <span class="keyword">for</span> bracket <span class="keyword">in</span> s:        </div><div class="line">            <span class="keyword">if</span> bracket == <span class="string">'('</span> <span class="keyword">or</span> bracket == <span class="string">'&#123;'</span> <span class="keyword">or</span> bracket == <span class="string">'['</span>:</div><div class="line">                stack.append(bracket)</div><div class="line">            <span class="keyword">elif</span> len(stack) == <span class="number">0</span> <span class="keyword">and</span> (bracket == <span class="string">')'</span> <span class="keyword">or</span> bracket == <span class="string">'&#125;'</span> <span class="keyword">or</span> bracket == <span class="string">']'</span>):</div><div class="line">                <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">            <span class="keyword">elif</span> bracket == <span class="string">')'</span>:</div><div class="line">                <span class="keyword">if</span> stack[<span class="number">-1</span>] == <span class="string">'('</span>:</div><div class="line">                    stack.pop()</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">            <span class="keyword">elif</span> bracket == <span class="string">'&#125;'</span>:</div><div class="line">                <span class="keyword">if</span> stack[<span class="number">-1</span>] == <span class="string">'&#123;'</span>:</div><div class="line">                    stack.pop()</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">            <span class="keyword">elif</span> bracket == <span class="string">']'</span>:</div><div class="line">                <span class="keyword">if</span> stack[<span class="number">-1</span>] == <span class="string">'['</span>:</div><div class="line">                    stack.pop()</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="keyword">if</span> len(stack) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/leetCodeTencent50-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/leetCodeTencent50-1/" itemprop="url">
-                  leetcode腾讯精选练习50题（155. 最小栈）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-08-04 16:30:12" itemprop="dateCreated datePublished" datetime="2019-08-04T16:30:12+08:00">2019-08-04</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-08-05 10:51:46" itemprop="dateModified" datetime="2019-08-05T10:51:46+08:00">2019-08-05</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。</p>
-<p>push(x) – 将元素 x 推入栈中。<br>pop() – 删除栈顶的元素。<br>top() – 获取栈顶元素。<br>getMin() – 检索栈中的最小元素。</p>
-<p><strong>示例:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">MinStack minStack = new MinStack();</div><div class="line">minStack.push(-2);</div><div class="line">minStack.push(0);</div><div class="line">minStack.push(-3);</div><div class="line">minStack.getMin();   --&gt; 返回 -3.</div><div class="line">minStack.pop();</div><div class="line">minStack.top();      --&gt; 返回 0.</div><div class="line">minStack.getMin();   --&gt; 返回 -2.</div></pre></td></tr></table></figure></p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/min-stack" target="_blank" rel="external">https://leetcode-cn.com/problems/min-stack</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>从题目来看，选择了list类型来保存数据，然后push(x)，pop()的功能使用list自带的方法可以实现，top() 使用list的索引也可以实现，该题的重点在于getMin()的实现，但遍历元素又不行，因为要求在常数时间内，即O(1)时间复杂度。</p>
-<p>所以采用其他变量来保存最小元素，开始考虑的是采用numbers类型，但运行测试后发现pop后最小值无法回溯；最采用list保存最小元素解决了问题</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><ol>
-<li><p>使用了list保存数据，int保存最小元素。运行结果出现问题（pop后最小值无法回溯）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        initialize your data structure here.</div><div class="line">        """</div><div class="line">        self.data = []</div><div class="line">        self.minData = float(<span class="string">'inf'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x: int)</span> -&gt; <span class="keyword">None</span>:</span></div><div class="line">        self.data.append(x)</div><div class="line">        <span class="keyword">if</span> x &lt; self.minData:</div><div class="line">            self.minData = x</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span> -&gt; <span class="keyword">None</span>:</span></div><div class="line">        self.data.pop()</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">return</span> self.data[<span class="number">-1</span>]</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMin</span><span class="params">(self)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">return</span> self.minData</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用了list保存数据，同时list保存最小元素，运行通过</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        initialize your data structure here.</div><div class="line">        """</div><div class="line">        self.data = []</div><div class="line">        self.minData = []</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x: int)</span> -&gt; <span class="keyword">None</span>:</span></div><div class="line">        self.data.append(x)</div><div class="line">        <span class="keyword">if</span> len(self.minData) == <span class="number">0</span>:</div><div class="line">            self.minData.append(x)</div><div class="line">        <span class="keyword">elif</span> x &lt; self.minData[<span class="number">-1</span>]:</div><div class="line">            self.minData.append(x)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.minData.append(self.minData[<span class="number">-1</span>])</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span> -&gt; <span class="keyword">None</span>:</span></div><div class="line">        self.data.pop()</div><div class="line">        self.minData.pop()</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">return</span> self.data[<span class="number">-1</span>]</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMin</span><span class="params">(self)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">return</span> self.minData[<span class="number">-1</span>]</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Your MinStack object will be instantiated and called as such:</span></div><div class="line"><span class="comment"># obj = MinStack()</span></div><div class="line"><span class="comment"># obj.push(x)</span></div><div class="line"><span class="comment"># obj.pop()</span></div><div class="line"><span class="comment"># param_3 = obj.top()</span></div><div class="line"><span class="comment"># param_4 = obj.getMin()</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1831,8 +1812,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">articles</span>
                   </a>
                 </div>
               
@@ -1897,7 +1878,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.2</div>
+  <div class="theme-info">Thème – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.2</div>
 
 
 
