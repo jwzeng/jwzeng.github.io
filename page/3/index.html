@@ -217,7 +217,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -225,7 +225,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
 
       
@@ -260,6 +260,153 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/leetCodeTencent50-21/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/19/leetCodeTencent50-21/" itemprop="url">
+                  leetcode腾讯精选练习50题（16. 最接近的三数之和）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-19 10:15:38 / Updated at: 10:22:33" itemprop="dateCreated datePublished" datetime="2019-08-19T10:15:38+08:00">2019-08-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.</div><div class="line"></div><div class="line">与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/3sum-closest" target="_blank" rel="external">https://leetcode-cn.com/problems/3sum-closest</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>与上一题三数之和基本相同，只要把threeSum与0比较，改称threeSum与target比较，因为只存在唯一答案，所以不需要去重</p>
+<p>#代码</p>
+<p><strong>代码 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSumClosest</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></div><div class="line">        result =  float(<span class="string">'inf'</span>)</div><div class="line">        <span class="keyword">if</span> len(nums) &lt; <span class="number">3</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        nums.sort()     <span class="comment"># 排序</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>):</div><div class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]:</div><div class="line">                <span class="keyword">continue</span></div><div class="line">            left = i + <span class="number">1</span></div><div class="line">            right = len(nums) - <span class="number">1</span></div><div class="line">            <span class="keyword">while</span>(left &lt; right):</div><div class="line">                threeSum = nums[i] + nums[left] + nums[right]</div><div class="line">                gap = abs(threeSum - target)</div><div class="line">                <span class="keyword">if</span> abs(threeSum - target) &lt; abs(result - target):</div><div class="line">                    result = threeSum</div><div class="line">                <span class="keyword">if</span> threeSum == target:</div><div class="line">                    <span class="keyword">return</span> target</div><div class="line">                <span class="keyword">elif</span> threeSum &lt; target:</div><div class="line">                    left += <span class="number">1</span>	<span class="comment">#右移</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    right -= <span class="number">1</span>	<span class="comment">#左移</span></div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -315,14 +462,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-18 22:30:15" itemprop="dateCreated datePublished" datetime="2019-08-18T22:30:15+08:00">2019-08-18</time>
+              <time title="Post created: 2019-08-18 22:30:15" itemprop="dateCreated datePublished" datetime="2019-08-18T22:30:15+08:00">2019-08-18</time>
             
 
             
@@ -339,7 +486,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-19 11:26:57" itemprop="dateModified" datetime="2019-08-19T11:26:57+08:00">2019-08-19</time>
+                <time title="Updated at: 2019-08-19 11:26:57" itemprop="dateModified" datetime="2019-08-19T11:26:57+08:00">2019-08-19</time>
               
             
           </span>
@@ -490,14 +637,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-18 21:11:31 / Modified: 21:38:59" itemprop="dateCreated datePublished" datetime="2019-08-18T21:11:31+08:00">2019-08-18</time>
+              <time title="Post created: 2019-08-18 21:11:31 / Updated at: 21:38:59" itemprop="dateCreated datePublished" datetime="2019-08-18T21:11:31+08:00">2019-08-18</time>
             
 
             
@@ -645,14 +792,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-17 22:30:15" itemprop="dateCreated datePublished" datetime="2019-08-17T22:30:15+08:00">2019-08-17</time>
+              <time title="Post created: 2019-08-17 22:30:15" itemprop="dateCreated datePublished" datetime="2019-08-17T22:30:15+08:00">2019-08-17</time>
             
 
             
@@ -669,7 +816,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-19 11:33:52" itemprop="dateModified" datetime="2019-08-19T11:33:52+08:00">2019-08-19</time>
+                <time title="Updated at: 2019-08-19 11:33:52" itemprop="dateModified" datetime="2019-08-19T11:33:52+08:00">2019-08-19</time>
               
             
           </span>
@@ -817,14 +964,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-15 20:34:42 / Modified: 21:01:15" itemprop="dateCreated datePublished" datetime="2019-08-15T20:34:42+08:00">2019-08-15</time>
+              <time title="Post created: 2019-08-15 20:34:42 / Updated at: 21:01:15" itemprop="dateCreated datePublished" datetime="2019-08-15T20:34:42+08:00">2019-08-15</time>
             
 
             
@@ -970,14 +1117,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-15 15:18:58 / Modified: 16:28:54" itemprop="dateCreated datePublished" datetime="2019-08-15T15:18:58+08:00">2019-08-15</time>
+              <time title="Post created: 2019-08-15 15:18:58 / Updated at: 16:28:54" itemprop="dateCreated datePublished" datetime="2019-08-15T15:18:58+08:00">2019-08-15</time>
             
 
             
@@ -1127,14 +1274,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-14 19:47:15 / Modified: 21:36:08" itemprop="dateCreated datePublished" datetime="2019-08-14T19:47:15+08:00">2019-08-14</time>
+              <time title="Post created: 2019-08-14 19:47:15 / Updated at: 21:36:08" itemprop="dateCreated datePublished" datetime="2019-08-14T19:47:15+08:00">2019-08-14</time>
             
 
             
@@ -1286,14 +1433,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-14 19:01:20 / Modified: 19:16:30" itemprop="dateCreated datePublished" datetime="2019-08-14T19:01:20+08:00">2019-08-14</time>
+              <time title="Post created: 2019-08-14 19:01:20 / Updated at: 19:16:30" itemprop="dateCreated datePublished" datetime="2019-08-14T19:01:20+08:00">2019-08-14</time>
             
 
             
@@ -1445,14 +1592,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-13 20:58:36" itemprop="dateCreated datePublished" datetime="2019-08-13T20:58:36+08:00">2019-08-13</time>
+              <time title="Post created: 2019-08-13 20:58:36" itemprop="dateCreated datePublished" datetime="2019-08-13T20:58:36+08:00">2019-08-13</time>
             
 
             
@@ -1469,7 +1616,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-14 11:11:22" itemprop="dateModified" datetime="2019-08-14T11:11:22+08:00">2019-08-14</time>
+                <time title="Updated at: 2019-08-14 11:11:22" itemprop="dateModified" datetime="2019-08-14T11:11:22+08:00">2019-08-14</time>
               
             
           </span>
@@ -1613,14 +1760,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-13 11:06:50 / Modified: 15:05:45" itemprop="dateCreated datePublished" datetime="2019-08-13T11:06:50+08:00">2019-08-13</time>
+              <time title="Post created: 2019-08-13 11:06:50 / Updated at: 15:05:45" itemprop="dateCreated datePublished" datetime="2019-08-13T11:06:50+08:00">2019-08-13</time>
             
 
             
@@ -1710,156 +1857,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/leetCodeTencent50-11/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/12/leetCodeTencent50-11/" itemprop="url">
-                  leetcode腾讯精选练习50题（104. 二叉树的最大深度）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-08-12 22:12:14 / Modified: 22:16:05" itemprop="dateCreated datePublished" datetime="2019-08-12T22:12:14+08:00">2019-08-12</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个二叉树，找出其最大深度。</p>
-<p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
-<p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p>
-<p><strong>示例 1:</strong></p>
-<p>给定二叉树 <code>[3,9,20,null,null,15,7]</code>， </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  3</div><div class="line"> / \</div><div class="line">9  20</div><div class="line">  /  \</div><div class="line"> 15   7</div></pre></td></tr></table></figure>
-<p>返回它的最大深度 3 。 </p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="external">https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/</a> </p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>动态规划用递归实现，最大深度 = max(左子树最大深度，右子树最大深度) + 1</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxDepth</span><span class="params">(self, root: TreeNode)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        l = root.left</div><div class="line">        r = root.right</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">not</span> l) <span class="keyword">and</span> (<span class="keyword">not</span> r):</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            result = max(self.maxDepth(l), self.maxDepth(r)) + <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1907,8 +1904,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -1965,7 +1962,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
 
 
 

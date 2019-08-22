@@ -217,7 +217,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -225,7 +225,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
 
       
@@ -260,6 +260,162 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/leetCodeTencent50-31/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/21/leetCodeTencent50-31/" itemprop="url">
+                  leetcode腾讯精选练习50题（238. 除自身以外数组的乘积）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-21 17:00:57 / Updated at: 23:51:24" itemprop="dateCreated datePublished" datetime="2019-08-21T17:00:57+08:00">2019-08-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定长度为 n 的整数数组 nums，其中 n &gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: [1,2,3,4]</div><div class="line">输出: [24,12,8,6]</div></pre></td></tr></table></figure>
+<p>说明: 请不要使用除法，且在 O(n) 时间复杂度内完成此题。</p>
+<p>进阶：<br>你可以在常数空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数组不被视为额外空间。）</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/product-of-array-except-self" target="_blank" rel="external">https://leetcode-cn.com/problems/product-of-array-except-self</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>首先直接暴击计算，测试果然超出了时间限制。</p>
+<p>题目要求O(n)的时间复杂度，只能单层遍历，只能把总乘积分成左右两边乘积来算。</p>
+<p>要满足常数空间复杂度，左右乘积不能用数组来保存了，只能用单个值来保存了。这就意味着要现算现用，用完就不用缓存了。</p>
+<p>看了下别人的代码，时间复杂度竟然还能更小，两个for能在一个for里实现</p>
+<p>#代码</p>
+<p><strong>代码 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">productExceptSelf</span><span class="params">(self, nums: List[int])</span> -&gt; List[int]:</span></div><div class="line">        output = [<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))]</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(nums)):</div><div class="line">                <span class="keyword">if</span> j == i:</div><div class="line">                    <span class="keyword">continue</span></div><div class="line">                output[i] *= nums[j]</div><div class="line">        <span class="keyword">return</span> output</div></pre></td></tr></table></figure>
+<p><strong>代码 2:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">productExceptSelf</span><span class="params">(self, nums: List[int])</span> -&gt; List[int]:</span></div><div class="line">        output = [<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))]</div><div class="line">        left = [<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))]</div><div class="line">        right = [<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))]</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):</div><div class="line">            left[i] = left[i<span class="number">-1</span>] * nums[i<span class="number">-1</span>]</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</div><div class="line">            right[j] = right[j+<span class="number">1</span>] * nums[j+<span class="number">1</span>]</div><div class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> range(len(nums)):</div><div class="line">            output[k] = left[k] * right[k]</div><div class="line">        <span class="keyword">return</span> output</div><div class="line"><span class="comment"># 改进</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">productExceptSelf</span><span class="params">(self, nums: List[int])</span> -&gt; List[int]:</span></div><div class="line">        output = [<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))]</div><div class="line">        right = <span class="number">1</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):</div><div class="line">            output[i] = output[i<span class="number">-1</span>] * nums[i<span class="number">-1</span>]</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</div><div class="line">            right = right * nums[j+<span class="number">1</span>]</div><div class="line">            output[j] *= right</div><div class="line">        <span class="keyword">return</span> output</div></pre></td></tr></table></figure>
+<p><strong>代码 3:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">productExceptSelf</span><span class="params">(self, nums: List[int])</span> -&gt; List[int]:</span></div><div class="line">        output = [<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))]</div><div class="line">        left = <span class="number">1</span></div><div class="line">        right = <span class="number">1</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):</div><div class="line">            left = left * nums[i<span class="number">-1</span>]</div><div class="line">            output[i] *= left</div><div class="line">            right = right * nums[len(nums)-i]</div><div class="line">            output[len(nums)-i<span class="number">-1</span>] *= right</div><div class="line">        <span class="keyword">return</span> output</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -315,14 +471,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-21 16:37:32 / Modified: 22:15:57" itemprop="dateCreated datePublished" datetime="2019-08-21T16:37:32+08:00">2019-08-21</time>
+              <time title="Post created: 2019-08-21 16:37:32 / Updated at: 22:15:57" itemprop="dateCreated datePublished" datetime="2019-08-21T16:37:32+08:00">2019-08-21</time>
             
 
             
@@ -470,14 +626,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-21 15:41:49 / Modified: 17:27:15" itemprop="dateCreated datePublished" datetime="2019-08-21T15:41:49+08:00">2019-08-21</time>
+              <time title="Post created: 2019-08-21 15:41:49 / Updated at: 17:27:15" itemprop="dateCreated datePublished" datetime="2019-08-21T15:41:49+08:00">2019-08-21</time>
             
 
             
@@ -626,14 +782,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-21 15:09:28 / Modified: 16:29:21" itemprop="dateCreated datePublished" datetime="2019-08-21T15:09:28+08:00">2019-08-21</time>
+              <time title="Post created: 2019-08-21 15:09:28 / Updated at: 16:29:21" itemprop="dateCreated datePublished" datetime="2019-08-21T15:09:28+08:00">2019-08-21</time>
             
 
             
@@ -781,14 +937,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-20 22:08:48 / Modified: 22:46:44" itemprop="dateCreated datePublished" datetime="2019-08-20T22:08:48+08:00">2019-08-20</time>
+              <time title="Post created: 2019-08-20 22:08:48 / Updated at: 22:46:44" itemprop="dateCreated datePublished" datetime="2019-08-20T22:08:48+08:00">2019-08-20</time>
             
 
             
@@ -934,14 +1090,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-20 21:37:51 / Modified: 22:07:56" itemprop="dateCreated datePublished" datetime="2019-08-20T21:37:51+08:00">2019-08-20</time>
+              <time title="Post created: 2019-08-20 21:37:51 / Updated at: 22:07:56" itemprop="dateCreated datePublished" datetime="2019-08-20T21:37:51+08:00">2019-08-20</time>
             
 
             
@@ -1081,14 +1237,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-19 23:17:15" itemprop="dateCreated datePublished" datetime="2019-08-19T23:17:15+08:00">2019-08-19</time>
+              <time title="Post created: 2019-08-19 23:17:15" itemprop="dateCreated datePublished" datetime="2019-08-19T23:17:15+08:00">2019-08-19</time>
             
 
             
@@ -1105,7 +1261,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-20 00:23:21" itemprop="dateModified" datetime="2019-08-20T00:23:21+08:00">2019-08-20</time>
+                <time title="Updated at: 2019-08-20 00:23:21" itemprop="dateModified" datetime="2019-08-20T00:23:21+08:00">2019-08-20</time>
               
             
           </span>
@@ -1242,14 +1398,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-19 22:57:39 / Modified: 23:22:27" itemprop="dateCreated datePublished" datetime="2019-08-19T22:57:39+08:00">2019-08-19</time>
+              <time title="Post created: 2019-08-19 22:57:39 / Updated at: 23:22:27" itemprop="dateCreated datePublished" datetime="2019-08-19T22:57:39+08:00">2019-08-19</time>
             
 
             
@@ -1396,14 +1552,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-19 22:17:42 / Modified: 22:48:53" itemprop="dateCreated datePublished" datetime="2019-08-19T22:17:42+08:00">2019-08-19</time>
+              <time title="Post created: 2019-08-19 22:17:42 / Updated at: 22:48:53" itemprop="dateCreated datePublished" datetime="2019-08-19T22:17:42+08:00">2019-08-19</time>
             
 
             
@@ -1555,14 +1711,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-19 10:53:58 / Modified: 11:12:48" itemprop="dateCreated datePublished" datetime="2019-08-19T10:53:58+08:00">2019-08-19</time>
+              <time title="Post created: 2019-08-19 10:53:58 / Updated at: 11:12:48" itemprop="dateCreated datePublished" datetime="2019-08-19T10:53:58+08:00">2019-08-19</time>
             
 
             
@@ -1659,153 +1815,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/leetCodeTencent50-21/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/19/leetCodeTencent50-21/" itemprop="url">
-                  leetcode腾讯精选练习50题（16. 最接近的三数之和）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-08-19 10:15:38 / Modified: 10:22:33" itemprop="dateCreated datePublished" datetime="2019-08-19T10:15:38+08:00">2019-08-19</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.</div><div class="line"></div><div class="line">与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/3sum-closest" target="_blank" rel="external">https://leetcode-cn.com/problems/3sum-closest</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>与上一题三数之和基本相同，只要把threeSum与0比较，改称threeSum与target比较，因为只存在唯一答案，所以不需要去重</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSumClosest</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></div><div class="line">        result =  float(<span class="string">'inf'</span>)</div><div class="line">        <span class="keyword">if</span> len(nums) &lt; <span class="number">3</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        nums.sort()     <span class="comment"># 排序</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>):</div><div class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]:</div><div class="line">                <span class="keyword">continue</span></div><div class="line">            left = i + <span class="number">1</span></div><div class="line">            right = len(nums) - <span class="number">1</span></div><div class="line">            <span class="keyword">while</span>(left &lt; right):</div><div class="line">                threeSum = nums[i] + nums[left] + nums[right]</div><div class="line">                gap = abs(threeSum - target)</div><div class="line">                <span class="keyword">if</span> abs(threeSum - target) &lt; abs(result - target):</div><div class="line">                    result = threeSum</div><div class="line">                <span class="keyword">if</span> threeSum == target:</div><div class="line">                    <span class="keyword">return</span> target</div><div class="line">                <span class="keyword">elif</span> threeSum &lt; target:</div><div class="line">                    left += <span class="number">1</span>	<span class="comment">#右移</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    right -= <span class="number">1</span>	<span class="comment">#左移</span></div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1853,8 +1862,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -1911,7 +1920,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
 
 
 
