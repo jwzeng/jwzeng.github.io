@@ -217,7 +217,7 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -225,7 +225,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
 
       
@@ -260,6 +260,459 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/leetCodeTencent50-34/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/22/leetCodeTencent50-34/" itemprop="url">
+                  leetcode腾讯精选练习50题（61. 旋转链表）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-22 11:30:21 / Updated at: 13:50:01" itemprop="dateCreated datePublished" datetime="2019-08-22T11:30:21+08:00">2019-08-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个链表，旋转链表，将链表每个节点向右移动 <em>k</em> 个位置，其中 <em>k</em> 是非负数。 </p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2</div><div class="line">输出: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</div><div class="line">解释:</div><div class="line">向右旋转 1 步: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL</div><div class="line">向右旋转 2 步: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</div></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">输入: 0-&gt;1-&gt;2-&gt;NULL, k = 4</div><div class="line">输出: 2-&gt;0-&gt;1-&gt;NULL</div><div class="line">解释:</div><div class="line">向右旋转 1 步: 2-&gt;0-&gt;1-&gt;NULL</div><div class="line">向右旋转 2 步: 1-&gt;2-&gt;0-&gt;NULL</div><div class="line">向右旋转 3 步: 0-&gt;1-&gt;2-&gt;NULL</div><div class="line">向右旋转 4 步: 2-&gt;0-&gt;1-&gt;NULL</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/rotate-list" target="_blank" rel="external">https://leetcode-cn.com/problems/rotate-list</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>首先当然是保存到数组，用数组移动，然后又放回链表。</p>
+<p>接下来用链表操作，与数组直接交换值不同，链表直接移动结点(值不变)。而移动有两种方法，一种所有节点往后移动1步，循环k次。另一种是直接往后移动k步。很明显第二种更简单，因为只要把数据的倒数第k个结点开始截断，再把最后一个结点拼在第一个结点前即可。所以关键是找到最后一个结点和倒数第k个结点。</p>
+<p>问题是怎么找到倒数第k个结点，倒数第k个=顺数第（length-k+1）个，所以只要求出链表的长度即可，遍历一遍计数就行。</p>
+<p>#代码</p>
+<p><strong>代码 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for singly-linked list.</span></div><div class="line"><span class="comment"># class ListNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rotateRight</span><span class="params">(self, head: ListNode, k: int)</span> -&gt; ListNode:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        h = res = ListNode(<span class="number">0</span>)</div><div class="line">        data = []</div><div class="line">        <span class="keyword">while</span> head:</div><div class="line">            data.append(head.val)</div><div class="line">            head = head.next</div><div class="line">        k = k % len(data)</div><div class="line">        data2 = data.copy()</div><div class="line">        data[k:len(data)] = data2[<span class="number">0</span>:len(data)-k]</div><div class="line">        data[<span class="number">0</span>:k] = data2[len(data)-k:len(data)]</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(data)):</div><div class="line">            node = ListNode(data[i])</div><div class="line">            h.next = node</div><div class="line">            h = h.next</div><div class="line">        <span class="keyword">return</span> res.next</div></pre></td></tr></table></figure>
+<p><strong>代码 2:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rotateRight</span><span class="params">(self, head: ListNode, k: int)</span> -&gt; ListNode:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        length = <span class="number">1</span>	<span class="comment"># 长度</span></div><div class="line">        endNode = head	<span class="comment"># 尾结点</span></div><div class="line">        <span class="keyword">while</span> endNode.next:</div><div class="line">            length += <span class="number">1</span></div><div class="line">            endNode = endNode.next</div><div class="line">        k = k % length	</div><div class="line">        <span class="keyword">if</span> k == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> head</div><div class="line">        count = <span class="number">1</span></div><div class="line">        kEndNode = head	<span class="comment"># 倒数第k个结点	</span></div><div class="line">        <span class="keyword">while</span> kEndNode:</div><div class="line">            <span class="keyword">if</span> count == length - k :</div><div class="line">                newEndNode = kEndNode</div><div class="line">                kEndNode = kEndNode.next	</div><div class="line">                newEndNode.next = <span class="keyword">None</span>	<span class="comment"># 截断</span></div><div class="line">                <span class="keyword">break</span></div><div class="line">            count += <span class="number">1</span></div><div class="line">            kEndNode = kEndNode.next</div><div class="line">        endNode.next = head	<span class="comment"># 拼接</span></div><div class="line">        <span class="keyword">return</span> kEndNode</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/leetCodeTencent50-33/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/22/leetCodeTencent50-33/" itemprop="url">
+                  leetcode腾讯精选练习50题（21. 合并两个有序链表）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-22 11:05:49 / Updated at: 12:27:10" itemprop="dateCreated datePublished" datetime="2019-08-22T11:05:49+08:00">2019-08-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</div><div class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="external">https://leetcode-cn.com/problems/merge-two-sorted-lists/</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>看到有序链表合并就想到有序数组的归并排序，根据头部的大小依次保存进一个新的数组即可。本题思路一样，只是要注意题目要求拼接两个链表的结点，所以不要用新的链表保存</p>
+<p>#代码</p>
+<p><strong>代码 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for singly-linked list.</span></div><div class="line"><span class="comment"># class ListNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mergeTwoLists</span><span class="params">(self, l1: ListNode, l2: ListNode)</span> -&gt; ListNode:</span></div><div class="line">        head = res = ListNode(<span class="number">0</span>)</div><div class="line">        <span class="keyword">while</span> l1 <span class="keyword">and</span> l2:</div><div class="line">            <span class="keyword">if</span> l1.val &lt;= l2.val:</div><div class="line">                head.next = l1</div><div class="line">                l1 = l1.next</div><div class="line">                head = head.next</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                head.next = l2</div><div class="line">                l2 = l2.next</div><div class="line">                head = head.next</div><div class="line">        <span class="keyword">if</span> l1:</div><div class="line">            head.next = l1</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            head.next = l2</div><div class="line">        <span class="keyword">return</span> res.next</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/leetCodeTencent50-32/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/22/leetCodeTencent50-32/" itemprop="url">
+                  leetcode腾讯精选练习50题（2. 两数相加）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-22 10:10:33 / Updated at: 12:06:48" itemprop="dateCreated datePublished" datetime="2019-08-22T10:10:33+08:00">2019-08-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。</p>
+<p>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p>
+<p>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</div><div class="line">输出：7 -&gt; 0 -&gt; 8</div><div class="line">原因：342 + 465 = 807</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/add-two-numbers" target="_blank" rel="external">https://leetcode-cn.com/problems/add-two-numbers</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>首先当然是转为整型数据直接计算，然后再保存回来。</p>
+<p>然后是链表计算，从头到尾遍历就行，只是要相加大于10要进位</p>
+<p>看了下别人的答案，思路跟我的差不多，不过while和下面的if中的代码基本一样，可以并在一起，比我的跟精简</p>
+<p>#代码</p>
+<p><strong>代码 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for singly-linked list.</span></div><div class="line"><span class="comment"># class ListNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addTwoNumbers</span><span class="params">(self, l1: ListNode, l2: ListNode)</span> -&gt; ListNode:</span></div><div class="line">        nums1 = <span class="number">0</span></div><div class="line">        tenNum = <span class="number">1</span></div><div class="line">        <span class="keyword">while</span> l1:</div><div class="line">            nums1 += l1.val * tenNum</div><div class="line">            tenNum *= <span class="number">10</span></div><div class="line">            l1 = l1.next</div><div class="line">        nums2 = <span class="number">0</span></div><div class="line">        tenNum = <span class="number">1</span></div><div class="line">        <span class="keyword">while</span> l2:</div><div class="line">            nums2 += l2.val * tenNum</div><div class="line">            tenNum *= <span class="number">10</span></div><div class="line">            l2 = l2.next</div><div class="line">        result = nums1 + nums2</div><div class="line">        data = result % <span class="number">10</span></div><div class="line">        head = res = ListNode(data)</div><div class="line">        result = result // <span class="number">10</span></div><div class="line">        <span class="keyword">while</span> result &gt; <span class="number">0</span>:</div><div class="line">            data = result % <span class="number">10</span></div><div class="line">            node = ListNode(data)</div><div class="line">            head.next = node</div><div class="line">            head = head.next</div><div class="line">            result = result // <span class="number">10</span></div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
+<p><strong>代码 2:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addTwoNumbers</span><span class="params">(self, l1: ListNode, l2: ListNode)</span> -&gt; ListNode:</span></div><div class="line">        head = res = ListNode(<span class="number">0</span>)</div><div class="line">        data = <span class="number">0</span></div><div class="line">        flag = <span class="keyword">False</span>	<span class="comment"># 进位标志</span></div><div class="line">        <span class="keyword">while</span> l1 <span class="keyword">and</span> l2:</div><div class="line">            <span class="keyword">if</span> flag:</div><div class="line">                data = l1.val + l2.val + <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                data = l1.val + l2.val</div><div class="line">            <span class="keyword">if</span> data &lt; <span class="number">10</span>:</div><div class="line">                flag = <span class="keyword">False</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                flag = <span class="keyword">True</span></div><div class="line">                data = data % <span class="number">10</span></div><div class="line">            node = ListNode(data)</div><div class="line">            head.next = node</div><div class="line">            head = head.next</div><div class="line">            l1 = l1.next</div><div class="line">            l2 = l2.next</div><div class="line">        <span class="keyword">if</span> l1:</div><div class="line">            <span class="keyword">while</span> l1:</div><div class="line">                <span class="keyword">if</span> flag:</div><div class="line">                    data = l1.val + <span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    data = l1.val</div><div class="line">                <span class="keyword">if</span> data &lt; <span class="number">10</span>:</div><div class="line">                    flag = <span class="keyword">False</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    flag = <span class="keyword">True</span></div><div class="line">                    data = data % <span class="number">10</span></div><div class="line">                node = ListNode(data)</div><div class="line">                head.next = node</div><div class="line">                head = head.next</div><div class="line">                l1 = l1.next</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">while</span> l2:</div><div class="line">                <span class="keyword">if</span> flag:</div><div class="line">                    data = l2.val + <span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    data = l2.val</div><div class="line">                <span class="keyword">if</span> data &lt; <span class="number">10</span>:</div><div class="line">                    flag = <span class="keyword">False</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    flag = <span class="keyword">True</span></div><div class="line">                    data = data % <span class="number">10</span></div><div class="line">                node = ListNode(data)</div><div class="line">                head.next = node</div><div class="line">                head = head.next</div><div class="line">                l2 = l2.next            </div><div class="line">        <span class="keyword">if</span> flag:</div><div class="line">            node = ListNode(<span class="number">1</span>)</div><div class="line">            head.next = node</div><div class="line">            head = head.next</div><div class="line">        <span class="keyword">return</span> res.next</div><div class="line"><span class="comment"># 优化</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addTwoNumbers</span><span class="params">(self, l1: ListNode, l2: ListNode)</span> -&gt; ListNode:</span></div><div class="line">        head = res = ListNode(<span class="number">0</span>)</div><div class="line">        data = <span class="number">0</span></div><div class="line">        flag = <span class="keyword">False</span></div><div class="line">        <span class="keyword">while</span> l1 <span class="keyword">or</span> l2:</div><div class="line">            x = l1.val <span class="keyword">if</span> l1 <span class="keyword">else</span> <span class="number">0</span></div><div class="line">            y = l2.val <span class="keyword">if</span> l2 <span class="keyword">else</span> <span class="number">0</span></div><div class="line">            <span class="keyword">if</span> flag:</div><div class="line">                data = x + y + <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                data = x + y</div><div class="line">            <span class="keyword">if</span> data &lt; <span class="number">10</span>:</div><div class="line">                flag = <span class="keyword">False</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                flag = <span class="keyword">True</span></div><div class="line">                data = data % <span class="number">10</span></div><div class="line">            node = ListNode(data)</div><div class="line">            head.next = node</div><div class="line">            head = head.next</div><div class="line">            <span class="keyword">if</span> l1:</div><div class="line">                l1 = l1.next</div><div class="line">            <span class="keyword">if</span> l2:</div><div class="line">                l2 = l2.next          </div><div class="line">        <span class="keyword">if</span> flag:</div><div class="line">            node = ListNode(<span class="number">1</span>)</div><div class="line">            head.next = node</div><div class="line">            head = head.next</div><div class="line">        <span class="keyword">return</span> res.next</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -315,14 +768,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-21 17:00:57 / Modified: 23:51:24" itemprop="dateCreated datePublished" datetime="2019-08-21T17:00:57+08:00">2019-08-21</time>
+              <time title="Post created: 2019-08-21 17:00:57 / Updated at: 23:51:24" itemprop="dateCreated datePublished" datetime="2019-08-21T17:00:57+08:00">2019-08-21</time>
             
 
             
@@ -471,14 +924,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-21 16:37:32 / Modified: 22:15:57" itemprop="dateCreated datePublished" datetime="2019-08-21T16:37:32+08:00">2019-08-21</time>
+              <time title="Post created: 2019-08-21 16:37:32 / Updated at: 22:15:57" itemprop="dateCreated datePublished" datetime="2019-08-21T16:37:32+08:00">2019-08-21</time>
             
 
             
@@ -626,14 +1079,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-21 15:41:49 / Modified: 17:27:15" itemprop="dateCreated datePublished" datetime="2019-08-21T15:41:49+08:00">2019-08-21</time>
+              <time title="Post created: 2019-08-21 15:41:49 / Updated at: 17:27:15" itemprop="dateCreated datePublished" datetime="2019-08-21T15:41:49+08:00">2019-08-21</time>
             
 
             
@@ -782,14 +1235,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-21 15:09:28 / Modified: 16:29:21" itemprop="dateCreated datePublished" datetime="2019-08-21T15:09:28+08:00">2019-08-21</time>
+              <time title="Post created: 2019-08-21 15:09:28 / Updated at: 16:29:21" itemprop="dateCreated datePublished" datetime="2019-08-21T15:09:28+08:00">2019-08-21</time>
             
 
             
@@ -937,14 +1390,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-20 22:08:48 / Modified: 22:46:44" itemprop="dateCreated datePublished" datetime="2019-08-20T22:08:48+08:00">2019-08-20</time>
+              <time title="Post created: 2019-08-20 22:08:48 / Updated at: 22:46:44" itemprop="dateCreated datePublished" datetime="2019-08-20T22:08:48+08:00">2019-08-20</time>
             
 
             
@@ -1090,14 +1543,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-20 21:37:51 / Modified: 22:07:56" itemprop="dateCreated datePublished" datetime="2019-08-20T21:37:51+08:00">2019-08-20</time>
+              <time title="Post created: 2019-08-20 21:37:51 / Updated at: 22:07:56" itemprop="dateCreated datePublished" datetime="2019-08-20T21:37:51+08:00">2019-08-20</time>
             
 
             
@@ -1237,14 +1690,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-08-19 23:17:15" itemprop="dateCreated datePublished" datetime="2019-08-19T23:17:15+08:00">2019-08-19</time>
+              <time title="Post created: 2019-08-19 23:17:15" itemprop="dateCreated datePublished" datetime="2019-08-19T23:17:15+08:00">2019-08-19</time>
             
 
             
@@ -1261,7 +1714,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-20 00:23:21" itemprop="dateModified" datetime="2019-08-20T00:23:21+08:00">2019-08-20</time>
+                <time title="Updated at: 2019-08-20 00:23:21" itemprop="dateModified" datetime="2019-08-20T00:23:21+08:00">2019-08-20</time>
               
             
           </span>
@@ -1306,477 +1759,6 @@
 <p>#代码</p>
 <p><strong>代码 1:</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">spiralOrder</span><span class="params">(self, matrix: List[List[int]])</span> -&gt; List[int]:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        result = []</div><div class="line">        left = <span class="number">0</span></div><div class="line">        right = len(matrix[<span class="number">0</span>])</div><div class="line">        up = <span class="number">0</span></div><div class="line">        down = len(matrix)</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(left, right): <span class="comment"># 左到右</span></div><div class="line">                result.append(matrix[up][i])</div><div class="line">            <span class="keyword">if</span> up == down - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            up += <span class="number">1</span></div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(up, down):	<span class="comment"># 上到下</span></div><div class="line">                result.append(matrix[j][right<span class="number">-1</span>])</div><div class="line">            <span class="keyword">if</span> left == right - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            right -= <span class="number">1</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(right - <span class="number">1</span>, left - <span class="number">1</span>, <span class="number">-1</span>):	<span class="comment"># 右到左</span></div><div class="line">                result.append(matrix[down<span class="number">-1</span>][i])</div><div class="line">            <span class="keyword">if</span> up == down - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            down -= <span class="number">1</span></div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(down <span class="number">-1</span>, up - <span class="number">1</span>, <span class="number">-1</span>):	<span class="comment"># 下到上</span></div><div class="line">                result.append(matrix[j][left])</div><div class="line">            <span class="keyword">if</span> left == right - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            left += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/leetCodeTencent50-24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/19/leetCodeTencent50-24/" itemprop="url">
-                  leetcode腾讯精选练习50题（53. 最大子序和）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-08-19 22:57:39 / Modified: 23:22:27" itemprop="dateCreated datePublished" datetime="2019-08-19T22:57:39+08:00">2019-08-19</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 </p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入: [-2,1,-3,4,-1,2,1,-5,4],</div><div class="line">输出: 6</div><div class="line">解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</div></pre></td></tr></table></figure>
-<p><strong>进阶:</strong></p>
-<p>如果你已经实现复杂度为 O(<em>n</em>) 的解法，尝试使用更为精妙的分治法求解。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="external">https://leetcode-cn.com/problems/maximum-subarray/</a> </p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这题是动态规划的经典应用,动态规划表达式：</p>
-<ul>
-<li>如果前面的连续子序和sum&gt;0, sum = sum + num[i]</li>
-<li>sum&lt;=0, sum =  num[i]</li>
-</ul>
-<p>最后在i求得的所以sum取最大的就是最大子序和result</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></div><div class="line">        s = nums[<span class="number">0</span>]</div><div class="line">        result = s</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(nums)):</div><div class="line">            <span class="keyword">if</span> s &gt; <span class="number">0</span>:</div><div class="line">                s += nums[i]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                s = nums[i]</div><div class="line">            result = max(result, s)</div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/leetCodeTencent50-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/19/leetCodeTencent50-23/" itemprop="url">
-                  leetcode腾讯精选练习50题（33. 搜索旋转排序数组）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-08-19 22:17:42 / Modified: 22:48:53" itemprop="dateCreated datePublished" datetime="2019-08-19T22:17:42+08:00">2019-08-19</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
-<p>( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。</p>
-<p>搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。</p>
-<p>你可以假设数组中不存在重复的元素。</p>
-<p>你的算法时间复杂度必须是 O(log n) 级别。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: nums = [4,5,6,7,0,1,2], target = 0</div><div class="line">输出: 4</div></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: nums = [4,5,6,7,0,1,2], target = 3</div><div class="line">输出: -1</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array" target="_blank" rel="external">https://leetcode-cn.com/problems/search-in-rotated-sorted-array</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>看到这个时间复杂度肯定要用二分法，但二分法要在有序的数组中才能实现。本题看似不是有序的数组，但实际从中间分开的两个数组，总有一个是有序的，所以只要把target跟这个有序的数组的头尾比较就行：</p>
-<ul>
-<li>如果nums[头] &lt; target &lt; nums[尾]，则有序的一半数组继续递归</li>
-<li>否则在剩下的一半中继续递归</li>
-</ul>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></div><div class="line">        </div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">findTarget</span><span class="params">(nums, left, right)</span>:</span></div><div class="line">            <span class="keyword">if</span> right - left == <span class="number">1</span>:</div><div class="line">                <span class="keyword">return</span> left <span class="keyword">if</span> nums[left] == target <span class="keyword">else</span> <span class="number">-1</span></div><div class="line">            mid_right = left + (right - left)//<span class="number">2</span></div><div class="line">            <span class="keyword">if</span> nums[left] &lt;=  nums[mid_right - <span class="number">1</span>]:	<span class="comment"># 判断有序还是无序</span></div><div class="line">                <span class="keyword">if</span> nums[left] == target:</div><div class="line">                    <span class="keyword">return</span> left</div><div class="line">                <span class="keyword">if</span> nums[mid_right - <span class="number">1</span>] == target:</div><div class="line">                    <span class="keyword">return</span> mid_right - <span class="number">1</span></div><div class="line">                <span class="keyword">if</span> target &gt; nums[left] <span class="keyword">and</span> target &lt; nums[mid_right - <span class="number">1</span>]:</div><div class="line">                    <span class="keyword">return</span> findTarget(nums, left, mid_right)</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> findTarget(nums, mid_right, right)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">if</span> nums[mid_right] == target:</div><div class="line">                    <span class="keyword">return</span> mid_right</div><div class="line">                <span class="keyword">if</span> nums[right - <span class="number">1</span>] == target:</div><div class="line">                    <span class="keyword">return</span> right - <span class="number">1</span></div><div class="line">                <span class="keyword">if</span> target &gt; nums[mid_right] <span class="keyword">and</span> target &lt; nums[right - <span class="number">1</span>]:</div><div class="line">                    <span class="keyword">return</span> findTarget(nums, mid_right, right)</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> findTarget(nums, left, mid_right)</div><div class="line">                    </div><div class="line">        <span class="keyword">if</span> len(nums) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span></div><div class="line">        <span class="keyword">if</span> len(nums) == <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> nums[<span class="number">0</span>] == target <span class="keyword">else</span> <span class="number">-1</span></div><div class="line">        left = <span class="number">0</span></div><div class="line">        right = len(nums)</div><div class="line">        <span class="keyword">return</span> findTarget(nums, left, right)</div></pre></td></tr></table></figure>
-<p><strong>代码 2:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></div><div class="line">        ind = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>):</div><div class="line">            <span class="keyword">if</span> nums[i] != nums[i+<span class="number">1</span>]:</div><div class="line">                ind += <span class="number">1</span></div><div class="line">                nums[ind] = nums[i+<span class="number">1</span>]</div><div class="line">        <span class="keyword">return</span> ind+<span class="number">1</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/leetCodeTencent50-22/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/19/leetCodeTencent50-22/" itemprop="url">
-                  leetcode腾讯精选练习50题（26. 删除排序数组中的重复项）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-08-19 10:53:58 / Modified: 11:12:48" itemprop="dateCreated datePublished" datetime="2019-08-19T10:53:58+08:00">2019-08-19</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">给定数组 nums = [1,1,2], </div><div class="line"></div><div class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </div><div class="line"></div><div class="line">你不需要考虑数组中超出新长度后面的元素。</div></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</div><div class="line"></div><div class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</div><div class="line"></div><div class="line">你不需要考虑数组中超出新长度后面的元素。</div></pre></td></tr></table></figure>
-<p>说明:</p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<p>你可以想象内部操作如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</div><div class="line">int len = removeDuplicates(nums);</div><div class="line"></div><div class="line">// 在函数里修改输入数组对于调用者是可见的。</div><div class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</div><div class="line">for (int i = 0; i &lt; len; i++) &#123;</div><div class="line">    print(nums[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="external">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>因为是排序数组，所以想到的是当nums[i] == nums[i+1]，就删掉一个，结果虽然通过了，但有点慢；</p>
-<p>刚才是采用删掉重复的，与之相反的是记住不同的，当nums[i] ！= nums[i+1]，就记住一个</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></div><div class="line">        i = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> i &lt; len(nums) - <span class="number">1</span>:</div><div class="line">            <span class="keyword">if</span> nums[i] == nums[i+<span class="number">1</span>]:</div><div class="line">                nums.pop(i+<span class="number">1</span>)</div><div class="line">                i -= <span class="number">1</span></div><div class="line">            i += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> len(nums)</div></pre></td></tr></table></figure>
-<p><strong>代码 2:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></div><div class="line">        ind = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>):</div><div class="line">            <span class="keyword">if</span> nums[i] != nums[i+<span class="number">1</span>]:</div><div class="line">                ind += <span class="number">1</span></div><div class="line">                nums[ind] = nums[i+<span class="number">1</span>]</div><div class="line">        <span class="keyword">return</span> ind+<span class="number">1</span></div></pre></td></tr></table></figure>
 
           
         
@@ -1862,8 +1844,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -1920,7 +1902,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
 
 
 
