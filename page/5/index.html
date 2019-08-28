@@ -276,6 +276,1365 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/leetCodeTencent50-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/12/leetCodeTencent50-10/" itemprop="url">
+                  leetcode腾讯精选练习50题（2的幂）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-12 17:29:24 / Updated at: 17:37:12" itemprop="dateCreated datePublished" datetime="2019-08-12T17:29:24+08:00">2019-08-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个整数，编写一个函数来判断它是否是 2 的幂次方。 </p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入: 1</div><div class="line">输出: true</div><div class="line">解释: 20 = 1</div></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入: 16</div><div class="line">输出: true</div><div class="line">解释: 24 = 16</div></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: 218</div><div class="line">输出: false</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/power-of-two/" target="_blank" rel="external">https://leetcode-cn.com/problems/power-of-two/</a> </p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>开始用的暴力计算，但提交超出了时间限制，修改了一下可以了。后来想到2的幂二进制联系起来，它的二进制表示都只有一个1</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><strong>代码 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPowerOfTwo</span><span class="params">(self, n: int)</span> -&gt; bool:</span></div><div class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="keyword">if</span> n == <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">while</span> n%<span class="number">2</span> == <span class="number">0</span>:</div><div class="line">            n /= <span class="number">2</span></div><div class="line">            <span class="keyword">if</span> n == <span class="number">1</span>:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div></pre></td></tr></table></figure>
+<p><strong>代码 2:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPowerOfTwo</span><span class="params">(self, n: int)</span> -&gt; bool:</span></div><div class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="comment"># n = bin(n)</span></div><div class="line">        n &amp;= (n<span class="number">-1</span>)</div><div class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/leetCodeTencent50-9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/12/leetCodeTencent50-9/" itemprop="url">
+                  leetcode腾讯精选练习50题（169. 求众数）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-12 15:35:42 / Updated at: 17:28:05" itemprop="dateCreated datePublished" datetime="2019-08-12T15:35:42+08:00">2019-08-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个大小为 <em>n</em> 的数组，找到其中的众数。众数是指在数组中出现次数<strong>大于</strong> <code>⌊ n/2 ⌋</code> 的元素。</p>
+<p>你可以假设数组是非空的，并且给定的数组总是存在众数。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: [3,2,3]</div><div class="line">输出: 3</div></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: [2,2,1,1,1,2,2]</div><div class="line">输出: 2</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/majority-element/" target="_blank" rel="external">https://leetcode-cn.com/problems/majority-element/</a> </p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>开始用的暴力计数，但提交超出了时间限制。因为众数超过了n/2,所以排序后中间的位置一定是众数</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><strong>代码 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span>       </div><div class="line">        majorityNum = len(nums)//<span class="number">2</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">            count = <span class="number">0</span></div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> nums:</div><div class="line">                <span class="keyword">if</span> j == i:</div><div class="line">                    count += <span class="number">1</span></div><div class="line">                <span class="keyword">if</span> count &gt; majorityNum:</div><div class="line">                    <span class="keyword">return</span> i</div></pre></td></tr></table></figure>
+<p><strong>代码 2:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span>       </div><div class="line">        nums.sort()     </div><div class="line">        <span class="keyword">return</span> nums[len(nums)//<span class="number">2</span>]</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/leetCodeTencent50-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/12/leetCodeTencent50-8/" itemprop="url">
+                  leetcode腾讯精选练习50题（136. 只出现一次的数字）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-12 11:38:47 / Updated at: 11:41:42" itemprop="dateCreated datePublished" datetime="2019-08-12T11:38:47+08:00">2019-08-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
+<p>说明：</p>
+<p>你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: [2,2,1]</div><div class="line">输出: 1</div></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: [4,1,2,1,2]</div><div class="line">输出: 4</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/single-number" target="_blank" rel="external">https://leetcode-cn.com/problems/single-number</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>没想到既满足时间复杂度又满足空间复杂度的方法，参考了一下别人的</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></div><div class="line">        result = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">            result = result ^ i</div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/leetCodeTencent50-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/11/leetCodeTencent50-7/" itemprop="url">
+                  leetcode腾讯精选练习50题（78. 子集）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-11 17:58:37" itemprop="dateCreated datePublished" datetime="2019-08-11T17:58:37+08:00">2019-08-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-08-28 14:49:09" itemprop="dateModified" datetime="2019-08-28T14:49:09+08:00">2019-08-28</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一组<strong>不含重复元素</strong>的整数数组 <em>nums</em>，返回该数组所有可能的子集（幂集）。</p>
+<p><strong>说明：</strong>解集不能包含重复的子集。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">输入: nums = [1,2,3]</div><div class="line">输出:</div><div class="line">[</div><div class="line">  [3],</div><div class="line">  [1],</div><div class="line">  [2],</div><div class="line">  [1,2,3],</div><div class="line">  [1,3],</div><div class="line">  [2,3],</div><div class="line">  [1,2],</div><div class="line">  []</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/subsets" target="_blank" rel="external">https://leetcode-cn.com/problems/subsets</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>从单个元素来看，每个元素都有在和不在子集两种选择，总共就有2^n选择也就是2^n个子集</p>
+<p>用动态规划，每新增一个元素，新的子集=原来的子集（不加新元素）+新增的子集（加入新元素）</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span></div><div class="line">        result = [[]]</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> result:</div><div class="line">                add = [i] + j</div><div class="line">                result = result + [add]</div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/10/leetCodeTencent50-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/10/leetCodeTencent50-6/" itemprop="url">
+                  leetcode腾讯精选练习50题（148. 排序链表）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-10 21:10:27 / Updated at: 22:13:27" itemprop="dateCreated datePublished" datetime="2019-08-10T21:10:27+08:00">2019-08-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>在 <em>O</em>(<em>n</em> log <em>n</em>) 时间复杂度和常数级空间复杂度下，对链表进行排序。 </p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: 4-&gt;2-&gt;1-&gt;3</div><div class="line">输出: 1-&gt;2-&gt;3-&gt;4</div></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: -1-&gt;5-&gt;3-&gt;4-&gt;0</div><div class="line">输出: -1-&gt;0-&gt;3-&gt;4-&gt;5</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/sort-list/" target="_blank" rel="external">https://leetcode-cn.com/problems/sort-list/</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>虽然实现了，但时间复杂度超了，参考了一下别人的</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><strong>代码 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for singly-linked list.</span></div><div class="line"><span class="comment"># class ListNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortList</span><span class="params">(self, head: ListNode)</span> -&gt; ListNode:</span></div><div class="line">        res = t = end= ListNode(<span class="number">0</span>)</div><div class="line">        res.next = head</div><div class="line">        <span class="keyword">while</span> head:</div><div class="line">            flag = <span class="keyword">True</span></div><div class="line">            <span class="keyword">while</span> head <span class="keyword">and</span> head.next <span class="keyword">and</span> (head.next != end):</div><div class="line">                t.val = head.val</div><div class="line">                <span class="keyword">if</span> head.val &gt; head.next.val:</div><div class="line">                    head.val = head.next.val</div><div class="line">                    head.next.val = t.val</div><div class="line">                    head = head.next</div><div class="line">                    flag = <span class="keyword">False</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                end = head</div><div class="line">            head = res.next</div><div class="line">            <span class="keyword">if</span> flag == <span class="keyword">True</span>:</div><div class="line">                <span class="keyword">return</span> head</div></pre></td></tr></table></figure>
+<p><strong>代码 2:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortList</span><span class="params">(self, head: ListNode)</span> -&gt; ListNode:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.next: <span class="keyword">return</span> head <span class="comment"># termination.</span></div><div class="line">        <span class="comment"># cut the LinkedList at the mid index.</span></div><div class="line">        slow, fast = head, head.next</div><div class="line">        <span class="keyword">while</span> fast <span class="keyword">and</span> fast.next:</div><div class="line">            fast, slow = fast.next.next, slow.next</div><div class="line">        mid, slow.next = slow.next, <span class="keyword">None</span> <span class="comment"># save and cut.</span></div><div class="line">        <span class="comment"># recursive for cutting.</span></div><div class="line">        left, right = self.sortList(head), self.sortList(mid)</div><div class="line">        <span class="comment"># merge `left` and `right` linked list and return it.</span></div><div class="line">        h = res = ListNode(<span class="number">0</span>)</div><div class="line">        <span class="keyword">while</span> left <span class="keyword">and</span> right:</div><div class="line">            <span class="keyword">if</span> left.val &lt; right.val: h.next, left = left, left.next</div><div class="line">            <span class="keyword">else</span>: h.next, right = right, right.next</div><div class="line">            h = h.next</div><div class="line">        h.next = left <span class="keyword">if</span> left <span class="keyword">else</span> right</div><div class="line">        <span class="keyword">return</span> res.next</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/09/leetCodeTencent50-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/09/leetCodeTencent50-5/" itemprop="url">
+                  leetcode腾讯精选练习50题（122. 买卖股票的最佳时机 II）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-09 21:22:40 / Updated at: 21:40:04" itemprop="dateCreated datePublished" datetime="2019-08-09T21:22:40+08:00">2019-08-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">输入: [7,1,5,3,6,4]</div><div class="line">输出: 7</div><div class="line">解释: 在第 2 天（股票价格 = 1）的时候买入，在第 3 天（股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。</div><div class="line">     随后，在第 4 天（股票价格 = 3）的时候买入，在第 5 天（股票价格 = 6）的时候卖出, 这笔交易所能获得利润 = 6-3 = 3 。</div></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">输入: [1,2,3,4,5]</div><div class="line">输出: 4</div><div class="line">解释: 在第 1 天（股票价格 = 1）的时候买入，在第 5 天 （股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。</div><div class="line">     注意你不能在第 1 天和第 2 天接连购买股票，之后再将它们卖出。</div><div class="line">     因为这样属于同时参与了多笔交易，你必须在再次购买前出售掉之前的股票。</div></pre></td></tr></table></figure>
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入: [7,6,4,3,1]</div><div class="line">输出: 0</div><div class="line">解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii" target="_blank" rel="external">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>直接每一天的价格减去前一天的，大于零的加到利润上，这样就行了</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices: List[int])</span> -&gt; int:</span></div><div class="line">        maxp = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(prices)<span class="number">-1</span>):</div><div class="line">            p = prices[i+<span class="number">1</span>] - prices[i]</div><div class="line">            <span class="keyword">if</span> p &gt; <span class="number">0</span>:</div><div class="line">                maxp += p</div><div class="line">        <span class="keyword">return</span> maxp</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/leetCodeTencent50-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/08/leetCodeTencent50-4/" itemprop="url">
+                  leetcode腾讯精选练习50题（23. 合并K个排序链表）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-08 21:17:30 / Updated at: 21:22:35" itemprop="dateCreated datePublished" datetime="2019-08-08T21:17:30+08:00">2019-08-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>合并 <em>k</em> 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。  </p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">输入:</div><div class="line">[</div><div class="line">  1-&gt;4-&gt;5,</div><div class="line">  1-&gt;3-&gt;4,</div><div class="line">  2-&gt;6</div><div class="line">]</div><div class="line">输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists" target="_blank" rel="external">https://leetcode-cn.com/problems/merge-k-sorted-lists</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>链表的值赋给list，然后排序，最后又赋值回新的链表</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for singly-linked list.</span></div><div class="line"><span class="comment"># class ListNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mergeKLists</span><span class="params">(self, lists: List[ListNode])</span> -&gt; ListNode:</span></div><div class="line">        newlist = []</div><div class="line">        newnode = []</div><div class="line">        <span class="keyword">if</span> len(lists) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> lists:</div><div class="line">            <span class="keyword">while</span> node:</div><div class="line">                newlist.append(node.val)</div><div class="line">                node = node.next</div><div class="line">        newlist.sort()</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(newlist)):</div><div class="line">            newnode.append(ListNode(newlist[i]))</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(newlist)<span class="number">-1</span>):</div><div class="line">            newnode[i].next = newnode[i+<span class="number">1</span>]</div><div class="line">        <span class="keyword">if</span> len(newnode) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        <span class="keyword">return</span> newnode[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/leetCodeTencent50-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/05/leetCodeTencent50-3/" itemprop="url">
+                  leetcode腾讯精选练习50题（215. 数组中的第K个最大元素）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-05 15:52:18 / Updated at: 15:58:37" itemprop="dateCreated datePublished" datetime="2019-08-05T15:52:18+08:00">2019-08-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>在未排序的数组中找到第 <strong>k</strong> 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 </p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: [3,2,1,5,6,4] 和 k = 2</div><div class="line">输出: 5</div></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: [3,2,3,1,2,4,5,5,6] 和 k = 4</div><div class="line">输出: 4</div></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array" target="_blank" rel="external">https://leetcode-cn.com/problems/kth-largest-element-in-an-array</a></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>直接排序即可</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findKthLargest</span><span class="params">(self, nums: List[int], k: int)</span> -&gt; int:</span></div><div class="line">        nums.sort(reverse=<span class="keyword">True</span>)</div><div class="line">        <span class="keyword">return</span> nums[k<span class="number">-1</span>]</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/leetCodeTencent50-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/05/leetCodeTencent50-2/" itemprop="url">
+                  leetcode腾讯精选练习50题（20. 有效的括号）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-08-05 09:47:12 / Updated at: 11:11:47" itemprop="dateCreated datePublished" datetime="2019-08-05T09:47:12+08:00">2019-08-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<p>​    1.左括号必须用相同类型的右括号闭合。<br>    2.左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/valid-parentheses" target="_blank" rel="external">https://leetcode-cn.com/problems/valid-parentheses</a></p>
+<p><strong>示例1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;()&quot;</div><div class="line">输出: true</div></pre></td></tr></table></figure></p>
+<p><strong>示例2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;()[]&#123;&#125;&quot;</div><div class="line">输出: true</div></pre></td></tr></table></figure>
+<p><strong>示例3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;(]&quot;</div><div class="line">输出: false</div></pre></td></tr></table></figure>
+<p><strong>示例4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;([)]&quot;</div><div class="line">输出: false</div></pre></td></tr></table></figure>
+<p><strong>示例5:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: &quot;&#123;[]&#125;&quot;</div><div class="line">输出: true</div></pre></td></tr></table></figure>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>从题目的示例来看，有效字符串的括号都是要一对一对的，因此可以采用左括号进栈；遇到右括号和栈中最后一个配对就出栈，不配对就是无效字符串</p>
+<p>采用list类型来实现进出栈，对字符串进行遍历即可</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValid</span><span class="params">(self, s: str)</span> -&gt; bool:</span></div><div class="line">        stack = []</div><div class="line">        <span class="keyword">for</span> bracket <span class="keyword">in</span> s:        </div><div class="line">            <span class="keyword">if</span> bracket == <span class="string">'('</span> <span class="keyword">or</span> bracket == <span class="string">'&#123;'</span> <span class="keyword">or</span> bracket == <span class="string">'['</span>:</div><div class="line">                stack.append(bracket)</div><div class="line">            <span class="keyword">elif</span> len(stack) == <span class="number">0</span> <span class="keyword">and</span> (bracket == <span class="string">')'</span> <span class="keyword">or</span> bracket == <span class="string">'&#125;'</span> <span class="keyword">or</span> bracket == <span class="string">']'</span>):</div><div class="line">                <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">            <span class="keyword">elif</span> bracket == <span class="string">')'</span>:</div><div class="line">                <span class="keyword">if</span> stack[<span class="number">-1</span>] == <span class="string">'('</span>:</div><div class="line">                    stack.pop()</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">            <span class="keyword">elif</span> bracket == <span class="string">'&#125;'</span>:</div><div class="line">                <span class="keyword">if</span> stack[<span class="number">-1</span>] == <span class="string">'&#123;'</span>:</div><div class="line">                    stack.pop()</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">            <span class="keyword">elif</span> bracket == <span class="string">']'</span>:</div><div class="line">                <span class="keyword">if</span> stack[<span class="number">-1</span>] == <span class="string">'['</span>:</div><div class="line">                    stack.pop()</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="keyword">if</span> len(stack) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/leetCodeTencent50-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -426,394 +1785,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/VS2012shortcutKey/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/23/VS2012shortcutKey/" itemprop="url">
-                  VS2012常见快捷键
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-10-23 20:37:18" itemprop="dateCreated datePublished" datetime="2018-10-23T20:37:18+08:00">2018-10-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-08-05 16:04:34" itemprop="dateModified" datetime="2019-08-05T16:04:34+08:00">2019-08-05</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ctrl + J:调用智能提示<br>ctrl + shift + 空格：调用参数信息提示<br>ctrl + G:跳到指定的某一行<br>ctrl + K + C/U：注释/取消注释<br>ctrl + F：查找<br>F12：跳转到定义<br>shift + F12：查找所有引用</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/23/hello-world/" itemprop="url">
-                  Hexo配置博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-10-23 20:02:28" itemprop="dateCreated datePublished" datetime="2018-10-23T20:02:28+08:00">2018-10-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-08-14 11:24:16" itemprop="dateModified" datetime="2019-08-14T11:24:16+08:00">2019-08-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop.png" alt=""></p>
-<blockquote>
-<p><strong>本版本仅适用于Win环境</strong><br>本文关键字： <strong>Hexo绿色版</strong>，<strong>Hexo便携版</strong>，<strong>Hexo配置</strong>，<strong>Hexo</strong>，<strong>U盘</strong></p>
-</blockquote>
-<p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>是一个快速、简洁且高效的博客框架，支持 GitHub Flavored Markdown 的所有功能；具有超快生成速度，让上百个页面在几秒内瞬间完成渲染；还拥有各式各样的插件等等。</p>
-<p>但是就像很多教程里面写的那样，搭建 Hexo 本地环境，需要安装 Node.js、Git 以及使用 npm 进行安装和配置。这对于毫无经验的新手来说，是一个很大的挑战。同时，由于这些环境的存在，导致如果需要更换计算机的时候，重新安装配置一个新的Hexo环境，又得花费一些功夫。</p>
-<p>所以呢，锵锵，我们整合了一个 Hexo 便携版，来简化本地环境的部署。</p>
-<p>####<strong>版本介绍</strong><br>那么所谓的便携版到底是什么？便携版就是将 Hexo 本地环境所需要的各种依赖环境的整合到一起，做成的不需要安装的版本。</p>
-<p>本便携版（Release 1.0.0）所包含的软件如下：</p>
-<blockquote>
-<ul>
-<li>Git: 2.7.4</li>
-<li>Nodejs: 6.10.1</li>
-<li>Npm: 4.4.1</li>
-<li>Hexo: 3.2.2</li>
-</ul>
-</blockquote>
-<p>为了便携的需要，不能配置固定的环境变量，所以除此之外还有相应的批处理文件，下文将详细介绍。</p>
-<p>####<strong>从零开始，1分钟搭建Hexo写作环境</strong><br>说了这么多，我们这就开始教你如何在1分钟内，从零开始搭建Hexo写作环境！</p>
-<p>#####1 注册一个Github帐号</p>
-<p>1.1 进入<a href="https://github.com" target="_blank" rel="external">Github</a>，并在右边的3个框框中分别填写 用户名、邮箱地址、账户密码，并点击 <strong><code>Sign up for Github</code></strong>;</p>
-<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop2.png" alt="图1.1.1"></p>
-<p>1.2 进入欢迎页面后，点击<strong><code>Finish sign up</code></strong>;</p>
-<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop3.png" alt="图1.2.1"></p>
-<p>1.3 进入到这一步之后（<strong>图1.3.1</strong>），先别记着点任何东西，查看你的邮箱，应该会收到如下的邮件（<strong>图1.3.2</strong>），确认你的邮件。否则，你会看到错误页面（<strong>图1.3.3</strong>）。query完毕之后在<strong>图1.3.1</strong>所示的页面，点击<strong><code>+ New repository</code></strong>;</p>
-<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop5.png" alt="图1.3.1"></p>
-<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop6.png" alt="图1.3.2"></p>
-<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop7.png" alt="图1.3.3"></p>
-<p>1.4 请在红框中的 <strong><code>Repository name</code></strong> 里面输入 <strong><code>用户名.github.io</code></strong> ( <strong>用户名</strong> 就是你刚刚 <strong>步骤1.1</strong> 中注册的用户名)，然后点击 <strong><code>Create repository</code></strong>;</p>
-<p><img src="https://portablehexo.bitmoe.cn/hexopp/hexop8.png" alt="图1.4.1"></p>
-<p>1.5 至此，Github网页注册的部分完毕</p>
-<p>####2 下载HEXO Portable</p>
-<p>2.1 访问我们的 <a href="https://project.bitmoe.cn/PortableHexo/" target="_blank" rel="external">HEXO Portable</a> 页面，或者 <a href="https://github.com/Bitmoe/PortableHexo" target="_blank" rel="external">Github仓库</a> 下载最新的便携版；</p>
-<p>2.2 双击得到的自解压文件，解压到你需要安装博客的地方，可以选择硬盘或者U盘；</p>
-<p>####3 配置你的环境</p>
-<p>3.1 在你的博客的文件夹，你会发现很多批处理文件，我先介绍下各个文件的用途：</p>
-<blockquote>
-<ul>
-<li>配置基本信息 &gt;&gt; 配置博客的基本环境</li>
-<li>配置Github部署 &gt;&gt; 配置博客的部署</li>
-<li>启动命令行 &gt;&gt; 启动带环境变量的Git-Bash，否则无法使用node、npm、git等命令</li>
-<li>新建文章 &gt;&gt; 新建一篇文章</li>
-<li>渲染并本地测试 &gt;&gt; 生成并本地预览</li>
-<li>渲染并部署 &gt;&gt; 生成并部署到GitHub</li>
-<li>重置配置文件 &gt;&gt; 重置_config.yml</li>
-</ul>
-</blockquote>
-<p>3.2 我们继续进行环境配置，双击<strong><code>配置基本信息</code></strong>并按顺序输入以下信息：</p>
-<blockquote>
-<ul>
-<li>主标题：顾名思义</li>
-<li>副标题：顾名思义</li>
-<li>描述：顾名思义</li>
-<li>作者：顾名思义</li>
-<li>网站地址：填写 <strong>用户名.github.io</strong> （此处的用户名为<strong>步骤1.1</strong>中填写的用户名）<br><strong>如果您已经购买了域名，可以参看相关的文章！</strong></li>
-</ul>
-</blockquote>
-<p>3.3 双击<strong><code>配置Github部署</code></strong>并按顺序输入以下信息：</p>
-<blockquote>
-<ul>
-<li>Github的用户名：此处的用户名为<strong>步骤1.1</strong>中填写的用户名</li>
-<li>Github注册邮箱：此处的注册邮箱为<strong>步骤1.1</strong>中填写的注册邮箱</li>
-</ul>
-</blockquote>
-<p>3.4 输入完毕之后，会进行测试部署，等待屏幕提示<strong>下面将进行部署测试，稍后将有一个openssh的对话框出现，请输入你的github用户密码。</strong>的时候，按回车继续；（此处的用户密码为<strong>步骤1.1</strong>中填写的用户密码）</p>
-<p>3.5 然后继续等待，此时屏幕会出现n多行，耐心等待即可；</p>
-<p>3.6 等待屏幕提示<strong>请访问 <a href="https://用户名.github.io" target="_blank" rel="external">https://用户名.github.io</a> 查看是否部署成功！</strong>的时候，在浏览器中输入<strong><a href="https://用户名.github.io" target="_blank" rel="external">https://用户名.github.io</a> </strong>，理论上可以看到你的Hexo站点！（此处的用户名为<strong>步骤1.1</strong>中填写的用户名）</p>
-<p>3.7 至此，你的Hexo环境就配置完成了，这样你的这个Hexo博客文件夹无论移动到哪一台电脑，都能通过<strong>启动命令行</strong>出现的bash命令行，或者其余便捷的批处理文件比如<strong>新建文章</strong>、<strong>渲染并本地测试</strong>、<strong>渲染并部署</strong>进行相应的操作。</p>
-<p>3.8 如果你在配置中出错，可以运行<strong>重置配置文件</strong>后，再重复<strong>3.1~3.6步骤</strong></p>
-<p>####4 开始享受纯粹的Hexo写作吧！</p>
-<p>####5 备注</p>
-<blockquote>
-<ul>
-<li>本便携版以及本文均使用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external">CC BY-NC-SA 4.0</a>协议；</li>
-<li>本文所有权归 <a href="http://qistchan.com" target="_blank" rel="external">QistChan</a> &amp; <a href="https://wwww.bitmoe.com" target="_blank" rel="external">Bitmoe Inc.</a> 所有；</li>
-<li>本便携版由 <a href="https://www.bitmoe.com" target="_blank" rel="external">Bitmoe Inc.</a> 维护并提供技术支持；</li>
-<li>需要技术支持可以在<a href="https://github.com/Bitmoe/PortableHexo" target="_blank" rel="external">Github仓库</a> 提交<strong><code>Issues</code></strong>；</li>
-<li>Written with <a href="https://stackedit.io/" target="_blank" rel="external">StackEdit</a>.</li>
-</ul>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -856,7 +1832,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
