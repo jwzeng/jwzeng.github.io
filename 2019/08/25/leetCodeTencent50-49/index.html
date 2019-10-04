@@ -114,7 +114,7 @@
 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/permutations
 解题思路类似于78. 子">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode腾讯精选练习50题（70. 爬楼梯）">
+<meta property="og:title" content="leetcode腾讯精选练习50题（46. 全排列）">
 <meta property="og:url" content="http://yoursite.com/2019/08/25/leetCodeTencent50-49/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="题目描述给定一个没有重复数字的序列，返回其所有可能的全排列。
@@ -122,9 +122,9 @@
 12345678910输入: [1,2,3]输出:[  [1,2,3],  [1,3,2],  [2,1,3],  [2,3,1],  [3,1,2],  [3,2,1]]
 来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/permutations
 解题思路类似于78. 子">
-<meta property="og:updated_time" content="2019-08-28T07:40:38.588Z">
+<meta property="og:updated_time" content="2019-10-04T14:19:15.081Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode腾讯精选练习50题（70. 爬楼梯）">
+<meta name="twitter:title" content="leetcode腾讯精选练习50题（46. 全排列）">
 <meta name="twitter:description" content="题目描述给定一个没有重复数字的序列，返回其所有可能的全排列。
 示例 1:
 12345678910输入: [1,2,3]输出:[  [1,2,3],  [1,3,2],  [2,1,3],  [2,3,1],  [3,1,2],  [3,2,1]]
@@ -146,7 +146,7 @@
   };
 </script>
 
-  <title>leetcode腾讯精选练习50题（70. 爬楼梯） | Hexo</title>
+  <title>leetcode腾讯精选练习50题（46. 全排列） | Hexo</title>
   
 
 
@@ -232,7 +232,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Beranda</a>
   </li>
         
         
@@ -240,7 +240,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Arsip</a>
   </li>
 
       
@@ -308,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetcode腾讯精选练习50题（70. 爬楼梯）
+          <h1 class="post-title" itemprop="name headline">leetcode腾讯精选练习50题（46. 全排列）
               
             
           </h1>
@@ -326,7 +326,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
@@ -350,7 +350,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-08-28 15:40:38" itemprop="dateModified" datetime="2019-08-28T15:40:38+08:00">2019-08-28</time>
+                <time title="Updated at: 2019-10-04 22:19:15" itemprop="dateModified" datetime="2019-10-04T22:19:15+08:00">2019-10-04</time>
               
             
           </span>
@@ -390,8 +390,7 @@
 <h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>类似于78. 子集子集那一题，那题是每个元素加和不加入子集的选择。这题是每个元素插入位置的选择。</p>
 <p>首先是第一个元素插入，只有1个位置；接着是第二个元素的插入，有2个位置，可以插入在第一个元素的前面和后面；接着是第三个元素的插入，有3个位置，….。</p>
 <p>最后是1<em> 2</em> 3<em> …</em> n = n!，符合全排列的n!种排列方式的结果。</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><strong>代码 1:</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span></div><div class="line">      <span class="keyword">if</span> <span class="keyword">not</span> nums:</div><div class="line">        <span class="keyword">return</span> [[]]</div><div class="line">      result = [[nums[<span class="number">0</span>]]]</div><div class="line">      newresult = []</div><div class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):	<span class="comment"># 遍历每个元素</span></div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(result)):	<span class="comment"># 遍历前i-1个元素排好的所有序列</span></div><div class="line">          <span class="keyword">for</span> k <span class="keyword">in</span> range(len(result[j])+<span class="number">1</span>):	<span class="comment"># 遍历第i个元素的插入位置</span></div><div class="line">            a = result[j].copy()</div><div class="line">            a.insert(k, nums[i])</div><div class="line">            newresult.append(a)</div><div class="line">        result = newresult</div><div class="line">        newresult = []</div><div class="line">      <span class="keyword">return</span> result</div><div class="line"><span class="comment"># 优化</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span></div><div class="line">      <span class="keyword">if</span> <span class="keyword">not</span> nums:</div><div class="line">        <span class="keyword">return</span> [[]]</div><div class="line">      result = [[nums[<span class="number">0</span>]]]</div><div class="line">      newresult = []</div><div class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> nums[<span class="number">1</span>:]:	<span class="comment"># 遍历每个元素</span></div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> result:	<span class="comment"># 遍历前面元素排好的所有序列</span></div><div class="line">          <span class="keyword">for</span> k <span class="keyword">in</span> range(len(j)+<span class="number">1</span>):	<span class="comment"># 遍历i的插入位置</span></div><div class="line">            newresult.append(j[:k] + [i] + j[k:])</div><div class="line">        result = newresult</div><div class="line">        newresult = []</div><div class="line">      <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
 
       
@@ -479,10 +478,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Daftar Isi
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Ikhtisar
           </li>
         </ul>
       
@@ -503,7 +502,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">52</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-name">posting</span>
                   </a>
                 </div>
               
@@ -542,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
@@ -576,7 +575,7 @@
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
 
 
 
@@ -584,7 +583,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.2</div>
+  <div class="theme-info">Tema – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.2</div>
 
 
 
