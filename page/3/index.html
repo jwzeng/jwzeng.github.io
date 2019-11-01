@@ -183,6 +183,7 @@
   <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
+	<a href="https://github.com/jwzeng" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
@@ -381,24 +382,18 @@
       
         
           
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个整数数组，判断是否存在重复元素。</p>
-<p>如果任何值在数组中出现至少两次，函数返回 true。如果数组中每个元素都不相同，则返回 false。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: [1,2,3,1]</div><div class="line">输出: true</div></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: [1,2,3,4]</div><div class="line">输出: false。</div></pre></td></tr></table></figure>
-<p><strong>示例 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: [1,1,1,3,3,4,3,2,4,2]</div><div class="line">输出: true</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/contains-duplicate/" target="_blank" rel="external">https://leetcode-cn.com/problems/contains-duplicate/</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>首先是利用python自带的set,测试好像也能通过。</p>
-<p>正常来写肯定是用哈希表了</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">containsDuplicate</span><span class="params">(self, nums: List[int])</span> -&gt; bool:</span></div><div class="line">        s = set(nums)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span> <span class="keyword">if</span> len(s) &lt; len(nums) <span class="keyword">else</span> <span class="keyword">False</span></div></pre></td></tr></table></figure>
-<p><strong>代码 2:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">containsDuplicate</span><span class="params">(self, nums: List[int])</span> -&gt; bool:</span></div><div class="line">        data = &#123;&#125;</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> data:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                data[i] = <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div></pre></td></tr></table></figure>
-
+          题目描述给定一个整数数组，判断是否存在重复元素。
+如果任何值在数组中出现至少两次，函数返回 true
+          ...
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/21/leetCodeTencent50-30/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -536,25 +531,18 @@
       
         
           
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
-<p>如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。</p>
-<p>注意你不能在买入股票前卖出股票。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">输入: [7,1,5,3,6,4]</div><div class="line">输出: 5</div><div class="line">解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。</div><div class="line">     注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格。</div></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入: [7,6,4,3,1]</div><div class="line">输出: 0</div><div class="line">解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock" target="_blank" rel="external">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>首先用暴力遍历，用每个元素后面最大的值减去该元素，得到每个元素买入时的最大利润，最后取最大的即可，测试后超时了。稍微去掉了一些不必要的值，结果还是超时。</p>
-<p>仔细观察了一下，发现是max求每个元素后面的最大值花太多时间了。继续改进了一下，改成从后往前遍历，求最大值就可以记忆保存了</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices: List[int])</span> -&gt; int:</span></div><div class="line">        result = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(prices) - <span class="number">1</span>):</div><div class="line">            result = max(result, max(prices[i+<span class="number">1</span>:]) - prices[i])</div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-<p><strong>代码 2:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices: List[int])</span> -&gt; int:</span></div><div class="line">        result = <span class="number">0</span></div><div class="line">        leftmin = float(<span class="string">'inf'</span>)</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(prices) - <span class="number">1</span>):</div><div class="line">            <span class="keyword">if</span> prices[i] &gt;= leftmin:</div><div class="line">                <span class="keyword">continue</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                leftmin = prices[i]</div><div class="line">            result = max(result, max(prices[i+<span class="number">1</span>:]) - prices[i])</div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-<p><strong>代码 3:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices: List[int])</span> -&gt; int:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> prices:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        result = <span class="number">0</span></div><div class="line">        rightmax = prices[len(prices)<span class="number">-1</span>]</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(prices) - <span class="number">2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</div><div class="line">            <span class="keyword">if</span> prices[i] &gt;= rightmax:</div><div class="line">                rightmax = prices[i]</div><div class="line">                <span class="keyword">continue</span></div><div class="line">            result = max(result, rightmax - prices[i])</div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-
+          题目描述给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
+如果你最多只允许完成一笔交
+          ...
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/21/leetCodeTencent50-29/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -692,24 +680,17 @@
       
         
           
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。</p>
-<p>说明:</p>
-<p>初始化 nums1 和 nums2 的元素数量分别为 m 和 n。<br>你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">输入:</div><div class="line">nums1 = [1,2,3,0,0,0], m = 3</div><div class="line">nums2 = [2,5,6],       n = 3</div><div class="line"></div><div class="line">输出: [1,2,2,3,5,6]</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/merge-sorted-array" target="_blank" rel="external">https://leetcode-cn.com/problems/merge-sorted-array</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>首先用list自带的排序方法看看，结果竟然通过了</p>
-<p>接下来自己写排序方法，按理来说，两个排好序的数组比较适合归并排序，把两个数组按照头部大小依次放入一个新的数组即可。但从题目来看，希望用现成的nums1来保存结果，应该是想空间复杂度尽量低O(1)，所以比较合适的就是插入排序了。</p>
-<p>看了下别人的，归并排序不用新的数组竟然也能实现，思路是把两个数组按照尾部大小（不包括0）依次放入一个num1尾部</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, nums1: List[int], m: int, nums2: List[int], n: int)</span> -&gt; <span class="keyword">None</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        Do not return anything, modify nums1 in-place instead.</div><div class="line">        """</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums2)):</div><div class="line">            nums1[m+i] = nums2[i]</div><div class="line">        nums1.sort()</div></pre></td></tr></table></figure>
-<p><strong>代码 2:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, nums1: List[int], m: int, nums2: List[int], n: int)</span> -&gt; <span class="keyword">None</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        Do not return anything, modify nums1 in-place instead.</div><div class="line">        """</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums2)):</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(m+i<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</div><div class="line">                <span class="keyword">if</span> nums1[j] &lt;= nums2[i]:</div><div class="line">                    nums1[j+<span class="number">1</span>] = nums2[i]</div><div class="line">                    <span class="keyword">break</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    nums1[j+<span class="number">1</span>] = nums1[j]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                nums1[<span class="number">0</span>] = nums2[i]</div></pre></td></tr></table></figure>
-<p><strong>代码 3:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, nums1: List[int], m: int, nums2: List[int], n: int)</span> -&gt; <span class="keyword">None</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        Do not return anything, modify nums1 in-place instead.</div><div class="line">        """       </div><div class="line">        one = m - <span class="number">1</span></div><div class="line">        two = n - <span class="number">1</span></div><div class="line">        total = m + n - <span class="number">1</span></div><div class="line">        <span class="keyword">while</span> one &gt;= <span class="number">0</span> <span class="keyword">and</span> two &gt;= <span class="number">0</span>:</div><div class="line">            <span class="keyword">if</span> nums1[one] &lt;= nums2[two]:</div><div class="line">                nums1[total] = nums2[two]</div><div class="line">                two -= <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                nums1[total] = nums1[one]</div><div class="line">                one -= <span class="number">1</span></div><div class="line">            total -= <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> one &lt; <span class="number">0</span>:</div><div class="line">            nums1[:two+<span class="number">1</span>] = nums2[:two+<span class="number">1</span>]</div></pre></td></tr></table></figure>
-
+          题目描述给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使
+          ...
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/21/leetCodeTencent50-28/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -847,22 +828,18 @@
       
         
           
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
-<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
-<p>问总共有多少条不同的路径？</p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/robot_maze.png" alt="img"> </p>
-<p>例如，上图是一个7 x 3 的网格。有多少可能的路径？</p>
-<p><strong>说明：*</strong>m<em> 和 </em>n* 的值均不超过 100。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">输入: m = 3, n = 2</div><div class="line">输出: 3</div><div class="line">解释:</div><div class="line">从左上角开始，总共有 3 条路径可以到达右下角。</div><div class="line">1. 向右 -&gt; 向右 -&gt; 向下</div><div class="line">2. 向右 -&gt; 向下 -&gt; 向右</div><div class="line">3. 向下 -&gt; 向右 -&gt; 向右</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/unique-paths" target="_blank" rel="external">https://leetcode-cn.com/problems/unique-paths</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这题跟前面的最长子序和一样，是动态规划的经典应用。每次只能向下或者向右移动一步，反过来说现在的位置只能由上面的或左面的移动一步得到的，于是得到了动态递推式：</p>
-<p>到当前的位置路径数 = 到上面的位置路径数 + 到左面的位置路径数</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m: int, n: int)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">if</span> m == <span class="number">0</span> <span class="keyword">and</span> n == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        result = [[<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(m)] <span class="keyword">for</span> j <span class="keyword">in</span> range(n)]</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, n):</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, m):</div><div class="line">                result[j][i] = result[j<span class="number">-1</span>][i] + result[j][i<span class="number">-1</span>]</div><div class="line">        <span class="keyword">return</span> result[n<span class="number">-1</span>][m<span class="number">-1</span>]</div></pre></td></tr></table></figure>
-
+          题目描述一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
+机
+          ...
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/20/leetCodeTencent50-27/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1000,16 +977,17 @@
       
         
           
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个正整数 <em>n</em>，生成一个包含 1 到 <em>n</em>2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。   </p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">输入: 3</div><div class="line">输出:</div><div class="line">[</div><div class="line"> [ 1, 2, 3 ],</div><div class="line"> [ 8, 9, 4 ],</div><div class="line"> [ 7, 6, 5 ]</div><div class="line">]</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/spiral-matrix-ii/" target="_blank" rel="external">https://leetcode-cn.com/problems/spiral-matrix-ii/</a> </p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>与上题一样还是用4个指针，左left、右right、上up、下down，每四次一个循环：左到右、上到下、右到左、下到上，直到左右或上下指针相遇跳出循环，只是把从矩阵中取出值的动作改成赋值就行</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generateMatrix</span><span class="params">(self, n: int)</span> -&gt; List[List[int]]:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> n:</div><div class="line">            <span class="keyword">return</span> []</div><div class="line">        left = <span class="number">0</span></div><div class="line">        right = n</div><div class="line">        up = <span class="number">0</span></div><div class="line">        down = n</div><div class="line">        data = <span class="number">1</span></div><div class="line">        result = [[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)] <span class="keyword">for</span> j <span class="keyword">in</span> range(n)]</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(left, right):</div><div class="line">                result[up][i] = data</div><div class="line">                data += <span class="number">1</span></div><div class="line">            <span class="keyword">if</span> up == down - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            up += <span class="number">1</span></div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(up, down):</div><div class="line">                result[j][right<span class="number">-1</span>] = data</div><div class="line">                data += <span class="number">1</span></div><div class="line">            <span class="keyword">if</span> left == right - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            right -= <span class="number">1</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(right - <span class="number">1</span>, left - <span class="number">1</span>, <span class="number">-1</span>):</div><div class="line">                result[down<span class="number">-1</span>][i] = data</div><div class="line">                data += <span class="number">1</span></div><div class="line">            <span class="keyword">if</span> up == down - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            down -= <span class="number">1</span></div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(down <span class="number">-1</span>, up - <span class="number">1</span>, <span class="number">-1</span>):</div><div class="line">                result[j][left] = data</div><div class="line">                data += <span class="number">1</span></div><div class="line">            <span class="keyword">if</span> left == right - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            left += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-
+          题目描述给定一个正整数 n，生成一个包含 1 到 n2 所有元素，且元素按顺时针顺序螺旋排列的正方形
+          ...
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/20/leetCodeTencent50-26/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1159,18 +1137,17 @@
       
         
           
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个包含 <em>m</em> x <em>n</em> 个元素的矩阵（<em>m</em> 行, <em>n</em> 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。  </p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">输入:</div><div class="line">[</div><div class="line"> [ 1, 2, 3 ],</div><div class="line"> [ 4, 5, 6 ],</div><div class="line"> [ 7, 8, 9 ]</div><div class="line">]</div><div class="line">输出: [1,2,3,6,9,8,7,4,5]</div></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">输入:</div><div class="line">[</div><div class="line">  [1, 2, 3, 4],</div><div class="line">  [5, 6, 7, 8],</div><div class="line">  [9,10,11,12]</div><div class="line">]</div><div class="line">输出: [1,2,3,4,8,12,11,10,9,5,6,7]</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/spiral-matrix" target="_blank" rel="external">https://leetcode-cn.com/problems/spiral-matrix</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这题首先首先想到的就是用4个指针，左left、右right、上up、下down，每四次一个循环：左到右、上到下、右到左、下到上，直到左右或上下指针相遇跳出循环</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">spiralOrder</span><span class="params">(self, matrix: List[List[int]])</span> -&gt; List[int]:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        result = []</div><div class="line">        left = <span class="number">0</span></div><div class="line">        right = len(matrix[<span class="number">0</span>])</div><div class="line">        up = <span class="number">0</span></div><div class="line">        down = len(matrix)</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(left, right): <span class="comment"># 左到右</span></div><div class="line">                result.append(matrix[up][i])</div><div class="line">            <span class="keyword">if</span> up == down - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            up += <span class="number">1</span></div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(up, down):	<span class="comment"># 上到下</span></div><div class="line">                result.append(matrix[j][right<span class="number">-1</span>])</div><div class="line">            <span class="keyword">if</span> left == right - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            right -= <span class="number">1</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(right - <span class="number">1</span>, left - <span class="number">1</span>, <span class="number">-1</span>):	<span class="comment"># 右到左</span></div><div class="line">                result.append(matrix[down<span class="number">-1</span>][i])</div><div class="line">            <span class="keyword">if</span> up == down - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            down -= <span class="number">1</span></div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(down <span class="number">-1</span>, up - <span class="number">1</span>, <span class="number">-1</span>):	<span class="comment"># 下到上</span></div><div class="line">                result.append(matrix[j][left])</div><div class="line">            <span class="keyword">if</span> left == right - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            left += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-
+          题目描述给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中
+          ...
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/19/leetCodeTencent50-25/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1308,23 +1285,17 @@
       
         
           
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 </p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入: [-2,1,-3,4,-1,2,1,-5,4],</div><div class="line">输出: 6</div><div class="line">解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</div></pre></td></tr></table></figure>
-<p><strong>进阶:</strong></p>
-<p>如果你已经实现复杂度为 O(<em>n</em>) 的解法，尝试使用更为精妙的分治法求解。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="external">https://leetcode-cn.com/problems/maximum-subarray/</a> </p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这题是动态规划的经典应用,动态规划表达式：</p>
-<ul>
-<li>如果前面的连续子序和sum&gt;0, sum = sum + num[i]</li>
-<li>sum&lt;=0, sum =  num[i]</li>
-</ul>
-<p>最后在i求得的所以sum取最大的就是最大子序和result</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></div><div class="line">        s = nums[<span class="number">0</span>]</div><div class="line">        result = s</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(nums)):</div><div class="line">            <span class="keyword">if</span> s &gt; <span class="number">0</span>:</div><div class="line">                s += nums[i]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                s = nums[i]</div><div class="line">            result = max(result, s)</div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-
+          题目描述给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回
+          ...
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/19/leetCodeTencent50-24/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1462,28 +1433,18 @@
       
         
           
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
-<p>( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。</p>
-<p>搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。</p>
-<p>你可以假设数组中不存在重复的元素。</p>
-<p>你的算法时间复杂度必须是 O(log n) 级别。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: nums = [4,5,6,7,0,1,2], target = 0</div><div class="line">输出: 4</div></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">输入: nums = [4,5,6,7,0,1,2], target = 3</div><div class="line">输出: -1</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array" target="_blank" rel="external">https://leetcode-cn.com/problems/search-in-rotated-sorted-array</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>看到这个时间复杂度肯定要用二分法，但二分法要在有序的数组中才能实现。本题看似不是有序的数组，但实际从中间分开的两个数组，总有一个是有序的，所以只要把target跟这个有序的数组的头尾比较就行：</p>
-<ul>
-<li>如果nums[头] &lt; target &lt; nums[尾]，则有序的一半数组继续递归</li>
-<li>否则在剩下的一半中继续递归</li>
-</ul>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></div><div class="line">        </div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">findTarget</span><span class="params">(nums, left, right)</span>:</span></div><div class="line">            <span class="keyword">if</span> right - left == <span class="number">1</span>:</div><div class="line">                <span class="keyword">return</span> left <span class="keyword">if</span> nums[left] == target <span class="keyword">else</span> <span class="number">-1</span></div><div class="line">            mid_right = left + (right - left)//<span class="number">2</span></div><div class="line">            <span class="keyword">if</span> nums[left] &lt;=  nums[mid_right - <span class="number">1</span>]:	<span class="comment"># 判断有序还是无序</span></div><div class="line">                <span class="keyword">if</span> nums[left] == target:</div><div class="line">                    <span class="keyword">return</span> left</div><div class="line">                <span class="keyword">if</span> nums[mid_right - <span class="number">1</span>] == target:</div><div class="line">                    <span class="keyword">return</span> mid_right - <span class="number">1</span></div><div class="line">                <span class="keyword">if</span> target &gt; nums[left] <span class="keyword">and</span> target &lt; nums[mid_right - <span class="number">1</span>]:</div><div class="line">                    <span class="keyword">return</span> findTarget(nums, left, mid_right)</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> findTarget(nums, mid_right, right)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">if</span> nums[mid_right] == target:</div><div class="line">                    <span class="keyword">return</span> mid_right</div><div class="line">                <span class="keyword">if</span> nums[right - <span class="number">1</span>] == target:</div><div class="line">                    <span class="keyword">return</span> right - <span class="number">1</span></div><div class="line">                <span class="keyword">if</span> target &gt; nums[mid_right] <span class="keyword">and</span> target &lt; nums[right - <span class="number">1</span>]:</div><div class="line">                    <span class="keyword">return</span> findTarget(nums, mid_right, right)</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> findTarget(nums, left, mid_right)</div><div class="line">                    </div><div class="line">        <span class="keyword">if</span> len(nums) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span></div><div class="line">        <span class="keyword">if</span> len(nums) == <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> nums[<span class="number">0</span>] == target <span class="keyword">else</span> <span class="number">-1</span></div><div class="line">        left = <span class="number">0</span></div><div class="line">        right = len(nums)</div><div class="line">        <span class="keyword">return</span> findTarget(nums, left, right)</div></pre></td></tr></table></figure>
-<p><strong>代码 2:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></div><div class="line">        ind = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>):</div><div class="line">            <span class="keyword">if</span> nums[i] != nums[i+<span class="number">1</span>]:</div><div class="line">                ind += <span class="number">1</span></div><div class="line">                nums[ind] = nums[i+<span class="number">1</span>]</div><div class="line">        <span class="keyword">return</span> ind+<span class="number">1</span></div></pre></td></tr></table></figure>
-
+          题目描述假设按照升序排序的数组在预先未知的某个点上进行了旋转。
+( 例如，数组 [0,1,2,4,5
+          ...
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/19/leetCodeTencent50-23/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1621,27 +1582,17 @@
       
         
           
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">给定数组 nums = [1,1,2], </div><div class="line"></div><div class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </div><div class="line"></div><div class="line">你不需要考虑数组中超出新长度后面的元素。</div></pre></td></tr></table></figure>
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</div><div class="line"></div><div class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</div><div class="line"></div><div class="line">你不需要考虑数组中超出新长度后面的元素。</div></pre></td></tr></table></figure>
-<p>说明:</p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<p>你可以想象内部操作如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</div><div class="line">int len = removeDuplicates(nums);</div><div class="line"></div><div class="line">// 在函数里修改输入数组对于调用者是可见的。</div><div class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</div><div class="line">for (int i = 0; i &lt; len; i++) &#123;</div><div class="line">    print(nums[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="external">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>因为是排序数组，所以想到的是当nums[i] == nums[i+1]，就删掉一个，结果虽然通过了，但有点慢；</p>
-<p>刚才是采用删掉重复的，与之相反的是记住不同的，当nums[i] ！= nums[i+1]，就记住一个</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></div><div class="line">        i = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> i &lt; len(nums) - <span class="number">1</span>:</div><div class="line">            <span class="keyword">if</span> nums[i] == nums[i+<span class="number">1</span>]:</div><div class="line">                nums.pop(i+<span class="number">1</span>)</div><div class="line">                i -= <span class="number">1</span></div><div class="line">            i += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> len(nums)</div></pre></td></tr></table></figure>
-<p><strong>代码 2:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></div><div class="line">        ind = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>):</div><div class="line">            <span class="keyword">if</span> nums[i] != nums[i+<span class="number">1</span>]:</div><div class="line">                ind += <span class="number">1</span></div><div class="line">                nums[ind] = nums[i+<span class="number">1</span>]</div><div class="line">        <span class="keyword">return</span> ind+<span class="number">1</span></div></pre></td></tr></table></figure>
-
+          题目描述给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新
+          ...
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/19/leetCodeTencent50-22/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1779,16 +1730,17 @@
       
         
           
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.</div><div class="line"></div><div class="line">与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).</div></pre></td></tr></table></figure>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/3sum-closest" target="_blank" rel="external">https://leetcode-cn.com/problems/3sum-closest</a></p>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>与上一题三数之和基本相同，只要把threeSum与0比较，改称threeSum与target比较，因为只存在唯一答案，所以不需要去重</p>
-<p>#代码</p>
-<p><strong>代码 1:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSumClosest</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></div><div class="line">        result =  float(<span class="string">'inf'</span>)</div><div class="line">        <span class="keyword">if</span> len(nums) &lt; <span class="number">3</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        nums.sort()     <span class="comment"># 排序</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>):</div><div class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]:</div><div class="line">                <span class="keyword">continue</span></div><div class="line">            left = i + <span class="number">1</span></div><div class="line">            right = len(nums) - <span class="number">1</span></div><div class="line">            <span class="keyword">while</span>(left &lt; right):</div><div class="line">                threeSum = nums[i] + nums[left] + nums[right]</div><div class="line">                gap = abs(threeSum - target)</div><div class="line">                <span class="keyword">if</span> abs(threeSum - target) &lt; abs(result - target):</div><div class="line">                    result = threeSum</div><div class="line">                <span class="keyword">if</span> threeSum == target:</div><div class="line">                    <span class="keyword">return</span> target</div><div class="line">                <span class="keyword">elif</span> threeSum &lt; target:</div><div class="line">                    left += <span class="number">1</span>	<span class="comment">#右移</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    right -= <span class="number">1</span>	<span class="comment">#左移</span></div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-
+          题目描述给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的
+          ...
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/19/leetCodeTencent50-21/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1876,7 +1828,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1891,7 +1843,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1906,7 +1860,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2049,6 +2013,8 @@
 
 
 
+  
+
 
 
 
@@ -2074,6 +2040,11 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
